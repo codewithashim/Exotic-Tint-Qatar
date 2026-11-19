@@ -1,0 +1,6 @@
+{
+  "name": "Exotic Tint Qatar",
+  "description": "Premier automotive window tinting, architectural solar control film, and luxury surface protection in Doha, Qatar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
