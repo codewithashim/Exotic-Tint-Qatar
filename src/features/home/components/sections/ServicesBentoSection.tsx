@@ -3,6 +3,8 @@
 import { ArrowRight } from 'lucide-react';
 import { ALL_SERVICES } from '@/features/services';
 import { SITE_CONFIG } from '@/config/site';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
 
 /** Bento grid of all 6 services; each card links to its detail page. */
@@ -41,6 +43,8 @@ export default function ServicesBentoSection() {
 
           <div className="my-5 rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] aspect-[16/10] bg-[#0d1117]">
             <img
+              loading="lazy"
+              decoding="async"
               src={ALL_SERVICES[0].image}
               alt={ALL_SERVICES[0].alt}
               referrerPolicy="no-referrer"
@@ -50,7 +54,9 @@ export default function ServicesBentoSection() {
 
           <div className="space-y-3">
             <h3 className="font-display font-extrabold text-2xl sm:text-4xl leading-[1.02] tracking-tight">
-              {ALL_SERVICES[0].title}
+              <SiteLink href={ROUTES.service(ALL_SERVICES[0].slug)} onClick={(e) => e.stopPropagation()}>
+                {ALL_SERVICES[0].title}
+              </SiteLink>
             </h3>
             <p className="text-xs sm:text-sm font-medium text-black/85 leading-relaxed">
               {ALL_SERVICES[0].desc}
@@ -84,6 +90,8 @@ export default function ServicesBentoSection() {
 
                 <div className="mb-3.5 rounded-2xl overflow-hidden border-2 border-black shadow-[3px_3px_0px_#000] aspect-[16/10] bg-[#0d1117]">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={service.image}
                     alt={service.alt}
                     referrerPolicy="no-referrer"
@@ -93,7 +101,9 @@ export default function ServicesBentoSection() {
 
                 <div className="flex items-start justify-between gap-2">
                   <h3 className="font-display font-extrabold text-xl leading-tight tracking-tight">
-                    {service.title}
+                    <SiteLink href={ROUTES.service(service.slug)} onClick={(e) => e.stopPropagation()}>
+                      {service.title}
+                    </SiteLink>
                   </h3>
                   <ArrowRight className="w-5 h-5 shrink-0 mt-0.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -121,6 +131,8 @@ export default function ServicesBentoSection() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 min-w-0 w-full">
             <div className="w-full sm:w-36 aspect-[16/10] sm:aspect-[4/3] rounded-2xl bg-[#0d1117] border-2 border-black shadow-[3px_3px_0px_#000] overflow-hidden shrink-0">
               <img
+                loading="lazy"
+                decoding="async"
                 src={ALL_SERVICES[5].image}
                 alt={ALL_SERVICES[5].alt}
                 referrerPolicy="no-referrer"
@@ -132,7 +144,9 @@ export default function ServicesBentoSection() {
                 06 · {ALL_SERVICES[5].badge}
               </span>
               <h3 className="font-display font-extrabold text-lg sm:text-2xl tracking-tight mt-1">
-                {ALL_SERVICES[5].title}
+                <SiteLink href={ROUTES.service(ALL_SERVICES[5].slug)} onClick={(e) => e.stopPropagation()}>
+                  {ALL_SERVICES[5].title}
+                </SiteLink>
               </h3>
               <p className="text-xs font-medium text-black/85 mt-1">
                 {ALL_SERVICES[5].desc}

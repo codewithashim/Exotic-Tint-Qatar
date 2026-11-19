@@ -130,7 +130,7 @@ export default function AboutStorySection() {
           <div className="rounded-3xl bg-[#f7efe1] text-[#121118] border-2 border-black shadow-[6px_6px_0px_#000] p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5">
             <div className="w-24 h-24 rounded-2xl bg-[#121118] border-2 border-black shadow-[4px_4px_0px_#000] p-2 flex items-center justify-center shrink-0">
               <img
-                src={ASSETS.brand.logoMark}
+                src={ASSETS.brand.logo}
                 alt="Exotic Tint Qatar Shield Crest"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-contain"

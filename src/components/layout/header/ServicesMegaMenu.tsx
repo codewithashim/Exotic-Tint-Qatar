@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 import { BOOKING_AREAS } from '@/config/site';
 import { ALL_SERVICES, type ServiceDetail } from '@/features/services';
 
 interface ServicesMegaMenuProps {
-  onOpenService: (slug: string) => void;
-  onOpenServicesHub: () => void;
+  /** Called when a page link in the menu is followed (closes the menu). */
+  onNavigate: () => void;
   onQuickBook: (serviceId: string) => void;
   onPickArea: (area: string) => void;
 }
@@ -27,10 +29,10 @@ function MegaMenuServiceItem({
   onClick: () => void;
 }) {
   return (
-    <button
-      type="button"
+    <SiteLink
+      href={ROUTES.service(item.slug)}
       onMouseEnter={onHover}
-      onClick={onClick}
+      onNavigate={onClick}
       className={`w-full p-2.5 xl:p-3 rounded-2xl border-2 text-left transition-all flex items-start justify-between gap-3 cursor-pointer ${
         isHovered
           ? `${item.bgClass} text-[#121118] border-black shadow-[3px_3px_0px_#000]`
@@ -57,7 +59,7 @@ function MegaMenuServiceItem({
         </p>
       </div>
       <ArrowRight className="w-4 h-4 shrink-0 mt-1" />
-    </button>
+    </SiteLink>
   );
 }
 
@@ -68,7 +70,7 @@ function ServiceColumn({
   services,
   hovered,
   onHover,
-  onOpenService,
+  onNavigate,
 }: {
   heading: string;
   headingClass: string;
@@ -76,7 +78,7 @@ function ServiceColumn({
   services: ServiceDetail[];
   hovered: ServiceDetail;
   onHover: (s: ServiceDetail) => void;
-  onOpenService: (slug: string) => void;
+  onNavigate: () => void;
 }) {
   return (
     <div className="space-y-2.5">
@@ -93,7 +95,7 @@ function ServiceColumn({
             item={item}
             isHovered={hovered.slug === item.slug}
             onHover={() => onHover(item)}
-            onClick={() => onOpenService(item.slug)}
+            onClick={onNavigate}
           />
         ))}
       </div>
@@ -103,8 +105,7 @@ function ServiceColumn({
 
 /** 3-column desktop services mega menu with a live "spotlight" card (lg+). */
 export default function ServicesMegaMenu({
-  onOpenService,
-  onOpenServicesHub,
+  onNavigate,
   onQuickBook,
   onPickArea,
 }: ServicesMegaMenuProps) {
@@ -122,7 +123,7 @@ export default function ServicesMegaMenu({
             services={windowTintServices}
             hovered={hovered}
             onHover={setHovered}
-            onOpenService={onOpenService}
+            onNavigate={onNavigate}
           />
         </div>
 
@@ -135,7 +136,7 @@ export default function ServicesMegaMenu({
             services={surfaceProtectionServices}
             hovered={hovered}
             onHover={setHovered}
-            onOpenService={onOpenService}
+            onNavigate={onNavigate}
           />
 
           <div className="p-3.5 rounded-2xl bg-[#121118] border-2 border-black space-y-2">
@@ -143,13 +144,13 @@ export default function ServicesMegaMenu({
               <p className="font-mono font-extrabold text-[10px] uppercase text-[#6ee7b7]">
                 QATAR DISPATCH ZONES
               </p>
-              <button
-                type="button"
-                onClick={onOpenServicesHub}
+              <SiteLink
+                href={ROUTES.services}
+                onNavigate={onNavigate}
                 className="text-[10px] font-mono font-extrabold text-[#d9f941] underline cursor-pointer"
               >
                 View All {ALL_SERVICES.length} Services Page →
-              </button>
+              </SiteLink>
             </div>
             <div className="flex flex-wrap gap-1.5">
               {BOOKING_AREAS.map((area) => (
@@ -200,13 +201,13 @@ export default function ServicesMegaMenu({
             </div>
 
             <div className="grid grid-cols-2 gap-2 pt-3 mt-3 border-t border-black/20">
-              <button
-                type="button"
-                onClick={() => onOpenService(hovered.slug)}
+              <SiteLink
+                href={ROUTES.service(hovered.slug)}
+                onNavigate={onNavigate}
                 className="py-2 px-3 rounded-xl bg-white hover:bg-[#d9f941] text-[#121118] font-display font-extrabold text-xs border-2 border-black shadow-[2px_2px_0px_#000] transition-colors cursor-pointer text-center"
               >
                 Service Page →
-              </button>
+              </SiteLink>
               <button
                 type="button"
                 onClick={() => onQuickBook(hovered.id)}

@@ -4,30 +4,24 @@ import { ArrowUpRight, Phone } from 'lucide-react';
 import { ASSETS } from '@/config/assets';
 import { FOOTER_SERVICE_ZONES, SITE_CONFIG } from '@/config/site';
 import { ALL_SERVICES } from '@/features/services';
-import { HOME_SECTIONS } from '@/config/routes';
+import { HOME_SECTIONS, ROUTES } from '@/config/routes';
+import { BrandWordmark } from '@/components/ui/BrandLockup';
+import SiteLink from '@/components/ui/SiteLink';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
 
 /** Site-wide footer: CTA ticket, brand column, navigation, services, dispatch info, socials. */
 export default function SiteFooter() {
-  const {
-    goHome,
-    goToHomeSection,
-    openAbout: openAboutPage,
-    openServices: openServicesHubPage,
-    openService: openServiceDetailPage,
-    openGallery: openGalleryPage,
-    openBlogs: openBlogsPage,
-    openContact: openContactPage,
-  } = useSiteNavigation();
+  const { goToHomeSection, openContact: openContactPage } = useSiteNavigation();
 
-  const FOOTER_NAV: { label: string; onClick: () => void; badge?: string }[] = [
-    { label: 'Home', onClick: goHome },
-    { label: 'About Us', onClick: openAboutPage },
-    { label: 'Services Hub', onClick: openServicesHubPage },
-    { label: 'Work Gallery', onClick: openGalleryPage, badge: 'HD' },
+  /** Page links are real `<a href>` (crawlable); in-page anchors use `onClick`. */
+  const FOOTER_NAV: { label: string; href?: string; onClick?: () => void; badge?: string }[] = [
+    { label: 'Home', href: ROUTES.home },
+    { label: 'About Us', href: ROUTES.about },
+    { label: 'Services Hub', href: ROUTES.services },
+    { label: 'Work Gallery', href: ROUTES.gallery, badge: 'HD' },
     { label: 'Client Reviews', onClick: () => goToHomeSection(HOME_SECTIONS.reviews) },
-    { label: 'Qatar Heat Blog', onClick: openBlogsPage },
-    { label: 'Contact & Dispatch', onClick: openContactPage },
+    { label: 'Qatar Heat Blog', href: ROUTES.blogs },
+    { label: 'Contact & Dispatch', href: ROUTES.contact },
   ];
 
   return (
@@ -74,14 +68,13 @@ export default function SiteFooter() {
             </div>
 
             <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center justify-end gap-3">
-              <button
-                type="button"
-                onClick={() => openContactPage()}
+              <SiteLink
+                href={ROUTES.contact}
                 className="px-5 py-3.5 rounded-2xl bg-[#f27438] hover:bg-[#d9f941] text-[#121118] font-display font-extrabold text-xs sm:text-sm border-2 border-black shadow-[4px_4px_0px_#000] hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <span>Book In Less Than 60 Sec</span>
                 <span>🔥</span>
-              </button>
+              </SiteLink>
 
               <a
                 href={SITE_CONFIG.phone.href}
@@ -99,18 +92,18 @@ export default function SiteFooter() {
           {/* Column 1: Brand Identity, Official Crest & Verified Telemetry (4 Cols) */}
           <div className="lg:col-span-4 space-y-5">
             <div className="flex items-center gap-3.5">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#161f33] border-2 border-black shadow-[4px_4px_0px_#000] p-1.5 flex items-center justify-center shrink-0">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shrink-0">
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={ASSETS.brand.logoMark}
-                  alt="Exotic Tint Qatar Official Shield Logo"
+                  alt="Exotic Tint Qatar logo"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-contain"
                 />
               </div>
               <div>
-                <span className="font-display font-extrabold text-2xl sm:text-3xl tracking-tight text-white block leading-none">
-                  Exotic Tint <span className="text-[#f27438]">Qatar</span>
-                </span>
+                <BrandWordmark className="font-display font-extrabold text-2xl sm:text-3xl tracking-tight text-white block leading-none" />
                 <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#6ee7b7] block mt-1">
                   Window Tint &amp; Surface Shield
                 </span>
@@ -159,15 +152,12 @@ export default function SiteFooter() {
               <span>Navigation</span>
             </p>
             <ul className="space-y-2 font-display font-bold text-sm">
-              {FOOTER_NAV.map((item) => (
-                <li key={item.label}>
-                  <button
-                    type="button"
-                    onClick={item.onClick}
-                    className={`${
-                      item.badge ? 'text-white' : 'text-slate-300'
-                    } hover:text-[#d9f941] inline-flex items-center gap-1.5 transition-colors cursor-pointer`}
-                  >
+              {FOOTER_NAV.map((item) => {
+                const className = `${
+                  item.badge ? 'text-white' : 'text-slate-300'
+                } hover:text-[#d9f941] inline-flex items-center gap-1.5 transition-colors cursor-pointer`;
+                const content = (
+                  <>
                     <span>{item.label}</span>
                     {item.badge ? (
                       <span className="px-1.5 py-0.2 rounded bg-[#6ee7b7] text-[#121118] font-mono text-[9px] font-extrabold border border-black">
@@ -176,9 +166,22 @@ export default function SiteFooter() {
                     ) : (
                       <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
                     )}
-                  </button>
-                </li>
-              ))}
+                  </>
+                );
+                return (
+                  <li key={item.label}>
+                    {item.href ? (
+                      <SiteLink href={item.href} className={className}>
+                        {content}
+                      </SiteLink>
+                    ) : (
+                      <button type="button" onClick={item.onClick} className={className}>
+                        {content}
+                      </button>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -191,9 +194,8 @@ export default function SiteFooter() {
             <ul className="space-y-2">
               {ALL_SERVICES.map((s) => (
                 <li key={s.slug}>
-                  <button
-                    type="button"
-                    onClick={() => openServiceDetailPage(s.slug)}
+                  <SiteLink
+                    href={ROUTES.service(s.slug)}
                     className="group w-full p-2 rounded-xl bg-[#161f33] hover:bg-[#1f2b47] border border-white/10 hover:border-[#d9f941] flex items-center justify-between gap-2 text-left transition-all cursor-pointer"
                   >
                     <div className="flex items-center gap-2 min-w-0">
@@ -205,7 +207,7 @@ export default function SiteFooter() {
                       </span>
                     </div>
                     <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#d9f941] shrink-0" />
-                  </button>
+                  </SiteLink>
                 </li>
               ))}
             </ul>

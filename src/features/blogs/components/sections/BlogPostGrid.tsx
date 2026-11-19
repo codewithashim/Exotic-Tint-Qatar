@@ -2,6 +2,8 @@
 
 import { ArrowRight } from 'lucide-react';
 import { type BlogPost } from '@/features/blogs/data/blogs-data';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
 
 interface BlogPostGridProps {
@@ -20,7 +22,6 @@ export default function BlogPostGrid({
   setSearchQuery,
   setSelectedCategory,
 }: BlogPostGridProps) {
-  const { openService: onSelectService } = useSiteNavigation();
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -60,6 +61,8 @@ export default function BlogPostGrid({
 
                 <div className="mb-4 rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] aspect-[16/10] bg-[#0d1117]">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={post.image}
                     alt={post.alt}
                     referrerPolicy="no-referrer"
@@ -68,7 +71,9 @@ export default function BlogPostGrid({
                 </div>
 
                 <h3 className="font-display font-extrabold text-xl leading-snug tracking-tight">
-                  {post.title}
+                  <SiteLink href={ROUTES.blogPost(post.slug)} onClick={(e) => e.stopPropagation()}>
+                    {post.title}
+                  </SiteLink>
                 </h3>
 
                 <p className="text-xs font-medium text-black/85 mt-2 leading-relaxed">
@@ -82,16 +87,13 @@ export default function BlogPostGrid({
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
 
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onSelectService(post.relatedServiceSlug);
-                  }}
+                <SiteLink
+                  href={ROUTES.service(post.relatedServiceSlug)}
+                  onClick={(e) => e.stopPropagation()}
                   className="text-[11px] font-mono font-extrabold underline hover:text-black/70 cursor-pointer"
                 >
                   Service Spec →
-                </button>
+                </SiteLink>
               </div>
             </article>
           ))}

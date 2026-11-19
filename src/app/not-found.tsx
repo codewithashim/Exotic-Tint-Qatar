@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { ROUTES } from '@/config/routes';
+import { notFoundMetadata } from '@/lib/seo/metadata';
+
+export const metadata = notFoundMetadata();
 
 export default function NotFound() {
   return (

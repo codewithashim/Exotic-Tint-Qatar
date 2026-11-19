@@ -1,3 +1,5 @@
+import { SITE_URL } from '@/lib/seo/site-url';
+
 /**
  * Business-wide constants: contact details, opening hours, socials and service zones.
  * Change a phone number or social link here and it updates across the whole site.
@@ -5,7 +7,8 @@
 export const SITE_CONFIG = {
   name: 'Exotic Tint Qatar',
   tagline: 'Window Tint & Surface Shield',
-  url: process.env.APP_URL ?? 'https://exotictintqatar.com',
+  /** Public production origin — see `src/lib/seo/site-url.ts` (SITE_URL → APP_URL → default). */
+  url: SITE_URL,
   description:
     'Premier automotive window tinting, residential and commercial solar control film, custom frosted glass, marble protection, and fabric nano-coating across Doha, Qatar.',
   phone: {
@@ -16,6 +19,9 @@ export const SITE_CONFIG = {
   hours: {
     label: '8:00 AM – 6:00 PM',
     days: 'Open 7 Days a Week',
+    /** Machine-readable form of the label above (24h, every day). Used in structured data. */
+    opens: '08:00',
+    closes: '18:00',
   },
   socials: {
     instagram: 'https://instagram.com',

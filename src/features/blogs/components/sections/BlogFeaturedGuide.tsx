@@ -1,6 +1,8 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 import { BLOG_POSTS } from '@/features/blogs/data/blogs-data';
 
 interface BlogFeaturedGuideProps {
@@ -38,7 +40,9 @@ export default function BlogFeaturedGuide({ handleOpenPost }: BlogFeaturedGuideP
               </span>
             </div>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl leading-tight">
-              {BLOG_POSTS[0].title}
+              <SiteLink href={ROUTES.blogPost(BLOG_POSTS[0].slug)} onClick={(e) => e.stopPropagation()}>
+                {BLOG_POSTS[0].title}
+              </SiteLink>
             </h2>
             <p className="text-xs sm:text-sm font-medium text-black/80 leading-relaxed">
               {BLOG_POSTS[0].excerpt}

@@ -4,22 +4,15 @@ import { CheckCircle2, Clock } from 'lucide-react';
 import { ASSETS } from '@/config/assets';
 import { SITE_CONFIG } from '@/config/site';
 import { BLOG_POSTS, type BlogPost } from '@/features/blogs/data/blogs-data';
-import { useSiteNavigation } from '@/hooks/use-site-navigation';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 
 interface BlogArticleReaderProps {
   activePost: BlogPost;
-  handleOpenPost: (slug: string) => void;
-  closePost: () => void;
 }
 
 /** Full article view: hero, key takeaways, sections, sidebar and related posts. */
-export default function BlogArticleReader({
-  activePost,
-  handleOpenPost,
-  closePost,
-}: BlogArticleReaderProps) {
-  const { openService: onSelectService } = useSiteNavigation();
-
+export default function BlogArticleReader({ activePost }: BlogArticleReaderProps) {
   return (
     <article className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
       {/* Article Hero Card */}
@@ -67,18 +60,18 @@ export default function BlogArticleReader({
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => onSelectService(activePost.relatedServiceSlug)}
+          <SiteLink
+            href={ROUTES.service(activePost.relatedServiceSlug)}
             className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full ${activePost.bgClass} text-[#121118] font-extrabold text-xs border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-y-[-2px] transition-transform cursor-pointer`}
           >
             <span>Open {activePost.relatedServiceTitle} Simulator →</span>
-          </button>
+          </SiteLink>
         </div>
 
         {/* Featured Widescreen Image */}
         <div className="rounded-2xl overflow-hidden border-2 border-black shadow-[6px_6px_0px_#000] aspect-[16/9] bg-[#0d1117]">
           <img
+            fetchPriority="high"
             src={activePost.image}
             alt={activePost.alt}
             referrerPolicy="no-referrer"
@@ -164,13 +157,12 @@ export default function BlogArticleReader({
             </div>
 
             <div className="pt-2 space-y-2.5">
-              <button
-                type="button"
-                onClick={() => onSelectService(activePost.relatedServiceSlug)}
+              <SiteLink
+                href={ROUTES.service(activePost.relatedServiceSlug)}
                 className="w-full py-3 px-4 rounded-full bg-[#f27438] hover:bg-[#ff854d] text-[#121118] font-extrabold text-xs border-2 border-black shadow-[3px_3px_0px_#000] cursor-pointer"
               >
                 Book {activePost.relatedServiceTitle} in 60s →
-              </button>
+              </SiteLink>
               <a
                 href={SITE_CONFIG.phone.href}
                 className="block w-full py-3 px-4 rounded-full bg-[#121118] text-white text-center font-mono font-extrabold text-xs border-2 border-black"
@@ -188,28 +180,28 @@ export default function BlogArticleReader({
           <h2 className="font-display font-extrabold text-2xl text-white">
             More Qatar Window Tinting &amp; Protection Guides
           </h2>
-          <button
-            type="button"
-            onClick={() => closePost()}
+          <SiteLink
+            href={ROUTES.blogs}
             className="text-xs font-mono font-bold text-[#d9f941] underline cursor-pointer"
           >
             View All 6 Guides →
-          </button>
+          </SiteLink>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {BLOG_POSTS.filter((p) => p.slug !== activePost.slug)
             .slice(0, 3)
             .map((item) => (
-              <button
+              <SiteLink
                 key={item.slug}
-                type="button"
-                onClick={() => handleOpenPost(item.slug)}
+                href={ROUTES.blogPost(item.slug)}
                 className={`${item.bgClass} text-[#121118] p-4 rounded-2xl border-2 border-black shadow-[4px_4px_0px_#000] text-left flex flex-col justify-between hover:translate-y-[-3px] transition-transform cursor-pointer group`}
               >
                 <div>
                   <div className="mb-3 rounded-xl overflow-hidden border-2 border-black aspect-[16/10] bg-[#0d1117]">
                     <img
+                      loading="lazy"
+                      decoding="async"
                       src={item.image}
                       alt={item.alt}
                       referrerPolicy="no-referrer"
@@ -226,7 +218,7 @@ export default function BlogArticleReader({
                 <span className="text-xs font-mono font-extrabold underline mt-3 inline-block">
                   Read Guide ({item.readTime}) →
                 </span>
-              </button>
+              </SiteLink>
             ))}
         </div>
       </div>

@@ -2,26 +2,24 @@
 
 import { ArrowLeft } from 'lucide-react';
 import { ALL_SERVICES } from '@/features/services/data/services-data';
-import { useSiteNavigation } from '@/hooks/use-site-navigation';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 
 /** Breadcrumb bar with a quick switcher to each service page. */
 export default function ServicesHubSubHeader() {
-  const { goHome: onBackHome, openService: onSelectService } = useSiteNavigation();
-
   return (
     <div className="bg-[#1a1922] border-b-2 border-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 space-y-3.5">
         {/* Row 1: Back to Home + Breadcrumb + Quick Actions */}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs font-bold">
-            <button
-              type="button"
-              onClick={onBackHome}
+            <SiteLink
+              href={ROUTES.home}
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f27438] text-[#121118] border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#d9f941] transition-colors cursor-pointer font-extrabold whitespace-nowrap shrink-0"
             >
               <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
               <span>Back to Home</span>
-            </button>
+            </SiteLink>
             <span className="text-slate-600 font-mono">/</span>
             <span className="text-[#d9f941] font-extrabold whitespace-nowrap">
               Our 6 Premium Services
@@ -44,10 +42,9 @@ export default function ServicesHubSubHeader() {
         {/* Row 2: 6-Service Quick Jump Bento Grid (Zero Scrollbar) */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-1">
           {ALL_SERVICES.map((item) => (
-            <button
+            <SiteLink
               key={item.slug}
-              type="button"
-              onClick={() => onSelectService(item.slug)}
+              href={ROUTES.service(item.slug)}
               className="px-3 py-2 rounded-xl text-left border-2 border-black bg-[#121118] text-slate-200 hover:bg-[#23222e] hover:border-[#d9f941] transition-all cursor-pointer flex items-center gap-2 group"
             >
               <span
@@ -58,7 +55,7 @@ export default function ServicesHubSubHeader() {
               <span className="text-[11px] font-extrabold leading-tight truncate group-hover:text-[#d9f941]">
                 {item.shortTitle}
               </span>
-            </button>
+            </SiteLink>
           ))}
         </div>
       </div>

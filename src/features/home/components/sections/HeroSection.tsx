@@ -1,14 +1,17 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { preload } from 'react-dom';
 import { ArrowUpRight, Pause, Phone, Play } from 'lucide-react';
 import { ASSETS } from '@/config/assets';
-import { useSiteNavigation } from '@/hooks/use-site-navigation';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 import { SITE_CONFIG } from '@/config/site';
 
 /** Full-screen video hero with headline, primary CTAs and headline stats. */
 export default function HeroSection() {
-  const { openGallery: openGalleryPage } = useSiteNavigation();
+  // The video poster is the first thing painted (LCP candidate): fetch it with high priority.
+  preload(ASSETS.services.automotive, { as: 'image', fetchPriority: 'high' });
   const [heroVideoPlaying, setHeroVideoPlaying] = useState(true);
   const heroVideoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -133,14 +136,13 @@ export default function HeroSection() {
               <span>+974 31608423</span>
             </a>
 
-            <button
-              type="button"
-              onClick={() => openGalleryPage()}
+            <SiteLink
+              href={ROUTES.gallery}
               className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-black/70 hover:bg-white/15 text-white font-display font-extrabold text-sm border-2 border-white/30 backdrop-blur-md transition-all whitespace-nowrap cursor-pointer"
             >
               <span>Work Gallery</span>
               <ArrowUpRight className="w-4 h-4 text-[#d9f941]" />
-            </button>
+            </SiteLink>
           </div>
 
           {/* Clean 3-Stat Telemetry Strip */}

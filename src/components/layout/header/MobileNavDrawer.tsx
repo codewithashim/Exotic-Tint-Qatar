@@ -2,21 +2,21 @@
 
 import { useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { PRIMARY_NAV, type PageKey } from '@/config/routes';
+import SiteLink from '@/components/ui/SiteLink';
+import { PRIMARY_NAV, ROUTES, type PageKey } from '@/config/routes';
 import { SITE_CONFIG } from '@/config/site';
 import { ALL_SERVICES } from '@/features/services';
 
 interface MobileNavDrawerProps {
   activePage: PageKey;
-  onNavigate: (page: PageKey) => void;
-  onOpenService: (slug: string) => void;
+  /** Called when a link in the drawer is followed (closes the drawer). */
+  onNavigate: () => void;
 }
 
 /** Slide-down navigation drawer for phones and tablets (< lg). */
 export default function MobileNavDrawer({
   activePage,
   onNavigate,
-  onOpenService,
 }: MobileNavDrawerProps) {
   const [servicesExpanded, setServicesExpanded] = useState(true);
 
@@ -31,10 +31,11 @@ export default function MobileNavDrawer({
       {/* Primary pages */}
       <div className="grid grid-cols-2 sm:grid-cols-3 landscape:grid-cols-3 gap-2">
         {PRIMARY_NAV.map((item, idx) => (
-          <button
+          <SiteLink
             key={item.key}
-            type="button"
-            onClick={() => onNavigate(item.key)}
+            href={item.href}
+            onNavigate={onNavigate}
+            aria-current={activePage === item.key ? 'page' : undefined}
             className={`p-2.5 rounded-xl border-2 text-left font-display font-extrabold transition-colors ${
               activePage === item.key
                 ? 'bg-[#d9f941] text-[#121118] border-black shadow-[2px_2px_0px_#000]'
@@ -42,7 +43,7 @@ export default function MobileNavDrawer({
             }`}
           >
             {String(idx + 1).padStart(2, '0')}. {item.label}
-          </button>
+          </SiteLink>
         ))}
       </div>
 
@@ -59,22 +60,22 @@ export default function MobileNavDrawer({
               className={`w-4 h-4 transition-transform ${servicesExpanded ? 'rotate-180' : ''}`}
             />
           </button>
-          <button
-            type="button"
-            onClick={() => onNavigate('services')}
+          <SiteLink
+            href={ROUTES.services}
+            onNavigate={onNavigate}
             className="px-2.5 py-1 rounded-lg bg-[#d9f941] text-[#121118] font-mono font-extrabold text-[10px] border border-black"
           >
             Catalog →
-          </button>
+          </SiteLink>
         </div>
 
         {servicesExpanded && (
           <div className="grid grid-cols-1 sm:grid-cols-2 landscape:grid-cols-2 gap-2 pt-1">
             {ALL_SERVICES.map((s) => (
-              <button
+              <SiteLink
                 key={s.slug}
-                type="button"
-                onClick={() => onOpenService(s.slug)}
+                href={ROUTES.service(s.slug)}
+                onNavigate={onNavigate}
                 className={`${s.bgClass} text-[#121118] p-2.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_#000] text-left flex items-center justify-between gap-2`}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
@@ -97,7 +98,7 @@ export default function MobileNavDrawer({
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 shrink-0" />
-              </button>
+              </SiteLink>
             ))}
           </div>
         )}
@@ -105,13 +106,13 @@ export default function MobileNavDrawer({
 
       {/* Actions */}
       <div className="grid grid-cols-1 sm:grid-cols-2 landscape:grid-cols-2 gap-2.5 pt-1">
-        <button
-          type="button"
-          onClick={() => onNavigate('contact')}
+        <SiteLink
+          href={ROUTES.contact}
+          onNavigate={onNavigate}
           className="py-3 px-4 rounded-xl bg-[#f27438] text-[#121118] font-display font-extrabold text-xs border-2 border-black shadow-[3px_3px_0px_#000] text-center"
         >
           Book In Less Than 60 Sec 🔥
-        </button>
+        </SiteLink>
         <a
           href={SITE_CONFIG.phone.href}
           className="py-3 px-4 rounded-xl bg-[#d9f941] text-[#121118] font-mono font-extrabold text-xs border-2 border-black shadow-[3px_3px_0px_#000] text-center"

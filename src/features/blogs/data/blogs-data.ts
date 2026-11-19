@@ -14,7 +14,13 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   readTime: string;
+  /** Display date shown on the page, e.g. "March 2026". */
   publishDate: string;
+  /**
+   * Optional exact publication date (ISO 8601, e.g. "2026-03-14") for structured data and the
+   * sitemap. When omitted, the month from `publishDate` is used — never an invented day.
+   */
+  publishedAt?: string;
   author: string;
   authorRole: string;
   bgClass: string;

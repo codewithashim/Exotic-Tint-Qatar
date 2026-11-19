@@ -4,13 +4,13 @@ import { ArrowLeft } from 'lucide-react';
 import { SITE_CONFIG } from '@/config/site';
 import { BLOG_CATEGORIES } from '@/features/blogs/data/blog-categories';
 import { type BlogPost } from '@/features/blogs/data/blogs-data';
-import { useSiteNavigation } from '@/hooks/use-site-navigation';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 
 interface BlogSubHeaderProps {
   activePost: BlogPost | undefined;
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
-  closePost: () => void;
 }
 
 /** Breadcrumb bar plus category filter tabs. */
@@ -18,10 +18,7 @@ export default function BlogSubHeader({
   activePost,
   selectedCategory,
   setSelectedCategory,
-  closePost,
 }: BlogSubHeaderProps) {
-  const { goHome: onBackHome } = useSiteNavigation();
-
   return (
     <div className="bg-[#1a1922] border-b-2 border-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 space-y-3.5">
@@ -29,33 +26,30 @@ export default function BlogSubHeader({
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs font-bold">
             {activePost ? (
-              <button
-                type="button"
-                onClick={() => closePost()}
+              <SiteLink
+                href={ROUTES.blogs}
                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#d9f941] text-[#121118] border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#f27438] transition-colors cursor-pointer font-extrabold whitespace-nowrap shrink-0"
               >
                 <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
                 <span>All Blog Guides</span>
-              </button>
+              </SiteLink>
             ) : (
-              <button
-                type="button"
-                onClick={onBackHome}
+              <SiteLink
+                href={ROUTES.home}
                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f27438] text-[#121118] border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#d9f941] transition-colors cursor-pointer font-extrabold whitespace-nowrap shrink-0"
               >
                 <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
                 <span>Back to Home</span>
-              </button>
+              </SiteLink>
             )}
 
             <span className="text-slate-600 font-mono">/</span>
-            <button
-              type="button"
-              onClick={() => closePost()}
+            <SiteLink
+              href={ROUTES.blogs}
               className="text-slate-300 hover:text-white whitespace-nowrap cursor-pointer"
             >
               Blogs &amp; Qatar Tinting Guides
-            </button>
+            </SiteLink>
             {activePost && (
               <>
                 <span className="text-slate-600 font-mono">/</span>
