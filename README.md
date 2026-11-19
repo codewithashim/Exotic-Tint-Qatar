@@ -36,12 +36,16 @@ npm run dev                  # http://localhost:3000
 | `npm run build` | Production build (type-checks and pre-renders all pages) |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint |
+| `npm test` | Unit tests for the SEO utilities (Node ≥ 22.6) |
+| `npm run seo:validate` | End-to-end SEO check against a running server (`npm run start` first) |
 
 ### Environment variables
 
 | Variable | Used for |
 | --- | --- |
-| `APP_URL` | The site's public URL. Used as the base for canonical/Open Graph URLs. Falls back to `https://exotictintqatar.com`. |
+| `SITE_URL` | The site's public production URL (e.g. `https://exotictintqatar.com`). Base for canonical URLs, Open Graph, `sitemap.xml`, `robots.txt` and structured data. **Read at build time.** |
+| `SEO_NOINDEX` | Set to `true` on staging/preview builds: `robots.txt` disallows everything and every page is `noindex`. Leave unset in production. |
+| `APP_URL` | Legacy fallback for `SITE_URL` (the hosting platform may set it to an internal URL — set `SITE_URL` instead). If neither is a valid URL, `https://exotictintqatar.com` is used. |
 | `GEMINI_API_KEY` | Not used by the current code. It is left over from the Google AI Studio template, and so is the `@google/genai` dependency. |
 
 ## Project structure
@@ -62,7 +66,8 @@ public/         Static files: brand/, images/services/, videos/
 Each feature folder has a page component (`HomePage.tsx`, `GalleryPage.tsx`, ...), its sections
 in `components/`, its content in `data/`, and an `index.ts` that other code imports from.
 
-See **[ARCHITECTURE.md](ARCHITECTURE.md)** for the full layout and the coding conventions.
+See **[ARCHITECTURE.md](ARCHITECTURE.md)** for the full layout and the coding conventions, and
+**[docs/](docs/)** for the SEO audit, implementation report and pre-deploy checklist.
 
 ## Common edits
 
@@ -76,7 +81,8 @@ See **[ARCHITECTURE.md](ARCHITECTURE.md)** for the full layout and the coding co
 | Client reviews | `src/features/home/data/testimonials.ts` |
 | Instagram reels | `src/features/home/data/reels-data.ts` |
 | Header / footer navigation | `src/config/routes.ts` and `src/components/layout/` |
-| Page titles and descriptions (SEO) | `metadata` in each `src/app/**/page.tsx` |
+| Page titles and descriptions (SEO) | `buildPageMetadata({...})` in each `src/app/**/page.tsx` — see [docs/SEO_IMPLEMENTATION_REPORT.md](docs/SEO_IMPLEMENTATION_REPORT.md) |
+| SEO settings, structured data, sitemap | `src/lib/seo/` |
 
 New services and blog posts get their own page automatically. Their URL comes from the `slug` field.
 

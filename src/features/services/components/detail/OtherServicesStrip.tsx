@@ -1,7 +1,8 @@
 'use client';
 
 import { ALL_SERVICES } from '@/features/services/data/services-data';
-import { useSiteNavigation } from '@/hooks/use-site-navigation';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 import type { ServiceDetail } from '@/features/services/data/services-data';
 
 interface OtherServicesStripProps {
@@ -10,7 +11,6 @@ interface OtherServicesStripProps {
 
 /** Links to the other services. */
 export default function OtherServicesStrip({ service }: OtherServicesStripProps) {
-  const { goHome: onBackHome, openService: onSelectService } = useSiteNavigation();
   const otherServices = ALL_SERVICES.filter((s) => s.slug !== service.slug);
 
   return (
@@ -19,21 +19,19 @@ export default function OtherServicesStrip({ service }: OtherServicesStripProps)
         <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-white">
           Explore Our Other Protection Solutions
         </h2>
-        <button
-          type="button"
-          onClick={onBackHome}
+        <SiteLink
+          href={ROUTES.home}
           className="text-xs font-mono font-bold text-[#d9f941] hover:underline cursor-pointer"
         >
           ← View All on Home Page
-        </button>
+        </SiteLink>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {otherServices.map((item) => (
-          <button
+          <SiteLink
             key={item.slug}
-            type="button"
-            onClick={() => onSelectService(item.slug)}
+            href={ROUTES.service(item.slug)}
             className={`${item.bgClass} text-[#121118] p-4 rounded-2xl border-2 border-black shadow-[4px_4px_0px_#000] text-left flex flex-col justify-between hover:translate-y-[-3px] transition-transform cursor-pointer group`}
           >
             <div>
@@ -47,6 +45,8 @@ export default function OtherServicesStrip({ service }: OtherServicesStripProps)
               </div>
               <div className="mb-2.5 rounded-xl overflow-hidden border-2 border-black shadow-[2px_2px_0px_#000] aspect-[16/10] bg-[#0d1117]">
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={item.image}
                   alt={item.alt}
                   referrerPolicy="no-referrer"
@@ -60,7 +60,7 @@ export default function OtherServicesStrip({ service }: OtherServicesStripProps)
             <span className="text-[11px] font-mono font-extrabold underline mt-3 inline-block">
               Open Service Page →
             </span>
-          </button>
+          </SiteLink>
         ))}
       </div>
     </section>

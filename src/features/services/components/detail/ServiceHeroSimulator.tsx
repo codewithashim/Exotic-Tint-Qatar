@@ -100,6 +100,7 @@ export default function ServiceHeroSimulator({
             {/* Visual Preview Frame */}
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] bg-[#0d1117]">
               <img
+                fetchPriority="high"
                 src={service.image}
                 alt={service.alt}
                 referrerPolicy="no-referrer"

@@ -1,7 +1,8 @@
 'use client';
 
 import { ChevronDown } from 'lucide-react';
-import type { PageKey } from '@/config/routes';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES, type PageKey } from '@/config/routes';
 import { ALL_SERVICES } from '@/features/services';
 
 const PILL_BASE =
@@ -14,25 +15,38 @@ interface DesktopNavProps {
   megaMenuOpen: boolean;
   onToggleMegaMenu: () => void;
   onOpenMegaMenu: () => void;
-  onNavigate: (page: PageKey) => void;
+  /** Called when one of the page links is followed (closes menus). */
+  onNavigate: () => void;
   onOpenReviews: () => void;
 }
 
 function NavPill({
   label,
   active,
+  href,
   onClick,
 }: {
   label: string;
   active?: boolean;
+  /** Page link (crawlable). Omit for in-page actions. */
+  href?: string;
   onClick: () => void;
 }) {
+  const className = `${PILL_BASE} ${active ? PILL_ACTIVE : PILL_IDLE}`;
+  if (href) {
+    return (
+      <SiteLink
+        href={href}
+        onNavigate={onClick}
+        className={className}
+        aria-current={active ? 'page' : undefined}
+      >
+        {label}
+      </SiteLink>
+    );
+  }
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`${PILL_BASE} ${active ? PILL_ACTIVE : PILL_IDLE}`}
-    >
+    <button type="button" onClick={onClick} className={className}>
       {label}
     </button>
   );
@@ -54,8 +68,8 @@ export default function DesktopNav({
       aria-label="Primary Navigation"
       className="hidden lg:flex items-center gap-1 p-1.5 rounded-full bg-[#1a1922] border-2 border-black shadow-[4px_4px_0px_#000]"
     >
-      <NavPill label="Home" active={activePage === 'home'} onClick={() => onNavigate('home')} />
-      <NavPill label="About" active={activePage === 'about'} onClick={() => onNavigate('about')} />
+      <NavPill label="Home" href={ROUTES.home} active={activePage === 'home'} onClick={onNavigate} />
+      <NavPill label="About" href={ROUTES.about} active={activePage === 'about'} onClick={onNavigate} />
 
       {/* Services hub button + mega menu toggle */}
       <div className="relative" onMouseEnter={onOpenMegaMenu}>
@@ -66,9 +80,10 @@ export default function DesktopNav({
               : 'text-slate-200 hover:text-white hover:bg-white/5 font-extrabold'
           }`}
         >
-          <button
-            type="button"
-            onClick={() => onNavigate('services')}
+          <SiteLink
+            href={ROUTES.services}
+            onNavigate={onNavigate}
+            aria-current={activePage === 'services' ? 'page' : undefined}
             className="pl-3.5 pr-1.5 py-1.5 text-xs whitespace-nowrap cursor-pointer flex items-center gap-1.5"
           >
             <span>Service</span>
@@ -81,7 +96,7 @@ export default function DesktopNav({
             >
               {String(ALL_SERVICES.length).padStart(2, '0')}
             </span>
-          </button>
+          </SiteLink>
           <button
             type="button"
             onClick={(e) => {
@@ -103,15 +118,17 @@ export default function DesktopNav({
 
       <NavPill
         label="Gallery"
+        href={ROUTES.gallery}
         active={activePage === 'gallery'}
-        onClick={() => onNavigate('gallery')}
+        onClick={onNavigate}
       />
       <NavPill label="Reviews" onClick={onOpenReviews} />
-      <NavPill label="Blogs" active={activePage === 'blogs'} onClick={() => onNavigate('blogs')} />
+      <NavPill label="Blogs" href={ROUTES.blogs} active={activePage === 'blogs'} onClick={onNavigate} />
       <NavPill
         label="Contact"
+        href={ROUTES.contact}
         active={activePage === 'contact'}
-        onClick={() => onNavigate('contact')}
+        onClick={onNavigate}
       />
     </nav>
   );

@@ -110,6 +110,7 @@ export default function GallerySpotlightHero({
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border-2 border-black bg-[#0d1117] select-none">
               {/* Base Layer: AFTER (Exotic Tint Protected - Crisp & Cool) */}
               <img
+                fetchPriority="high"
                 src={activeSpotlight.image}
                 alt={activeSpotlight.title}
                 referrerPolicy="no-referrer"

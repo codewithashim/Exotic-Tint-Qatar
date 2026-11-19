@@ -2,6 +2,8 @@
 
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { ServiceDetail } from '@/features/services/data/services-data';
+import SiteLink from '@/components/ui/SiteLink';
+import { ROUTES } from '@/config/routes';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
 
 interface ServicesCatalogGridProps {
@@ -55,6 +57,8 @@ export default function ServicesCatalogGrid({
                 className="rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] aspect-[16/9] bg-[#0d1117] cursor-pointer relative"
               >
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={service.image}
                   alt={service.alt}
                   referrerPolicy="no-referrer"
@@ -111,14 +115,13 @@ export default function ServicesCatalogGrid({
 
             {/* Dual Action Footer */}
             <div className="pt-4 border-t border-black/20 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
-              <button
-                type="button"
-                onClick={() => onSelectService(service.slug)}
+              <SiteLink
+                href={ROUTES.service(service.slug)}
                 className="flex-1 py-3 px-5 rounded-full bg-white hover:bg-[#121118] text-[#121118] hover:text-white font-display font-extrabold text-xs sm:text-sm border-2 border-black shadow-[4px_4px_0px_#000] transition-colors cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Explore {service.shortTitle} Page</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </SiteLink>
               <button
                 type="button"
                 onClick={() => handleQuickBookService(service.title)}

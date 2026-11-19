@@ -7,7 +7,7 @@ interface BrandLogoProps {
   alt?: string;
 }
 
-/** The square logo mark inside a neo-brutalist frame. Size/colors come from `className`. */
+/** The transparent logo icon mark. Size (and any frame) comes from `className`. */
 export function BrandLogo({ className, alt = `${SITE_CONFIG.name} Logo` }: BrandLogoProps) {
   return (
     <span className={cn('flex items-center justify-center overflow-hidden shrink-0', className)}>
@@ -22,11 +22,11 @@ export function BrandLogo({ className, alt = `${SITE_CONFIG.name} Logo` }: Brand
   );
 }
 
-/** "Exotic Tint Qatar" wordmark with the orange "Qatar". */
+/** "Exotic Tint Qatar" wordmark, matching the logo: "Exotic" in the logo's blue (#049adb). */
 export function BrandWordmark({ className }: { className?: string }) {
   return (
     <span className={className}>
-      Exotic Tint <span className="text-[#f27438]">Qatar</span>
+      <span className="text-[#049adb]">Exotic</span> Tint Qatar
     </span>
   );
 }

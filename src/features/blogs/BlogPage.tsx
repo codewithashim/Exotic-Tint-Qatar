@@ -20,7 +20,7 @@ interface BlogPageProps {
 
 /** Blog hub (`/blogs`) and article reader (`/blogs/[slug]`). */
 export default function BlogPage({ slug }: BlogPageProps) {
-  const { navigate, openBlogs, openBlogPost } = useSiteNavigation();
+  const { navigate, openBlogPost } = useSiteNavigation();
   const [selectedCategory, setCategory] = useState<string>(BLOG_CATEGORIES[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const activePost: BlogPost | undefined = slug ? getBlogPostBySlug(slug) : undefined;
@@ -47,9 +47,6 @@ export default function BlogPage({ slug }: BlogPageProps) {
   });
 
   const handleOpenPost = (postSlug: string) => openBlogPost(postSlug);
-  const closePost = () => {
-    if (activePost) openBlogs();
-  };
   /** On an article, picking a category goes back to the hub with that filter applied. */
   const setSelectedCategory = (category: string) => {
     if (activePost) navigate(`${ROUTES.blogs}?category=${encodeURIComponent(category)}`);
@@ -62,16 +59,11 @@ export default function BlogPage({ slug }: BlogPageProps) {
         activePost={activePost}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
-        closePost={closePost}
       />
 
       {/* IF AN ARTICLE IS SELECTED: FULL INTERACTIVE ARTICLE READER */}
       {activePost ? (
-        <BlogArticleReader
-          activePost={activePost}
-          handleOpenPost={handleOpenPost}
-          closePost={closePost}
-        />
+        <BlogArticleReader activePost={activePost} />
       ) : (
         /* BLOG HUB OVERVIEW: HERO + SEARCH + FEATURED POST + BENTO BLOG GRID */
         <>

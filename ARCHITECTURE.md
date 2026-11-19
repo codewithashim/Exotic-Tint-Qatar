@@ -33,6 +33,10 @@ src/
 
   hooks/use-site-navigation.ts  navigate(), openService(slug), goToHomeSection(id), ...
   lib/utils.ts                  cn() class merge helper
+  lib/seo/                      SEO core: site URL, canonical URLs, buildPageMetadata(),
+                                JSON-LD builders, sitemap entries (see docs/SEO_IMPLEMENTATION_REPORT.md)
+  components/seo/JsonLd.tsx     Safe <script type="application/ld+json"> renderer
+  components/ui/SiteLink.tsx    Crawlable internal link (next/link + smooth scroll to top)
 
 public/                      Served files only (see src/config/assets.ts)
   brand/  images/services/  videos/
@@ -43,6 +47,11 @@ public/                      Served files only (see src/config/assets.ts)
 - **Routes stay thin.** A `page.tsx` exports `metadata` and renders one feature page.
 - **No navigation props.** Components call `useSiteNavigation()` instead of receiving
   `onBackHome` / `onSelectService` callbacks.
+- **Links to other pages are `<SiteLink href>`, not `<button onClick={navigate}>`.** Search
+  engines only follow real `<a href>` links. Keep buttons for in-page actions (filters, modals,
+  scrolling to a home-page section, booking).
+- **Every page sets metadata with `buildPageMetadata()`** (unique title + description, canonical,
+  Open Graph, Twitter). New public routes are also added to `src/lib/seo/sitemap.ts`.
 - **No hard-coded asset paths, phone numbers or URLs.** Use `ASSETS`, `SITE_CONFIG`, `ROUTES`.
 - **Booking forms** validate with `validateContactDetails()` and build ticket ids with
   `createTicketNumber()`. Use `useBookingSelection()` to read/pre-fill the visitor's chosen
