@@ -24,6 +24,7 @@ import {
   SplitSquareVertical,
   MessageCircle,
 } from 'lucide-react';
+import { whatsappLink } from '@/config/site';
 import { type GalleryItem } from '@/features/gallery/data/gallery-data';
 import { isDirectVideoFile } from '@/features/gallery/lib/media';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
@@ -722,9 +723,9 @@ export default function GalleryLightbox({
               </button>
 
               <a
-                href={`https://wa.me/97431608423?text=${encodeURIComponent(
+                href={whatsappLink(
                   `Hi Exotic Tint Qatar! I want a quote similar to "${activeLightboxItem.title}" (${activeLightboxItem.id}).`
-                )}`}
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-2.5 px-3 rounded-xl bg-[#6ee7b7] hover:bg-white text-[#121118] font-display font-extrabold text-xs border-2 border-black shadow-[3px_3px_0px_#000] flex items-center justify-center gap-1"

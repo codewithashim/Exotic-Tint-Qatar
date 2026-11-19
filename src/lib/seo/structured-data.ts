@@ -2,7 +2,10 @@ import { ASSETS, ASSET_DIMENSIONS } from '@/config/assets';
 import { ROUTES } from '@/config/routes';
 import { SITE_CONFIG } from '@/config/site';
 import type { BlogPost } from '@/features/blogs';
-import type { ServiceDetail } from '@/features/services';
+import {
+  SERVICE_CATEGORY_LABELS,
+  type ServiceDetail,
+} from '@/features/services/data/services-data';
 import { absoluteAssetUrl, absoluteUrl } from './canonical';
 import { SEO_CONFIG, getVerifiedSocialProfiles } from './config';
 import { toIsoDate } from './text';
@@ -107,7 +110,7 @@ export function serviceSchema(service: ServiceDetail): JsonLdNode {
     '@id': `${url}#service`,
     name: service.title,
     serviceType: service.title,
-    category: service.category === 'window-tinting' ? 'Window tinting' : 'Surface protection',
+    category: SERVICE_CATEGORY_LABELS[service.category],
     description: service.longDescription,
     url,
     image: imageObject(service.image, service.alt),

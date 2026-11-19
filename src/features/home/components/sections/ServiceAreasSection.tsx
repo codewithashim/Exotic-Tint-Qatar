@@ -27,7 +27,7 @@ export default function ServiceAreasSection() {
               Doha, Lusail, Al Rayyan, Wakra, and surrounding areas
             </strong>
             . Get high-quality, heat-resistant, and UV-blocking tint solutions for your
-            home, office, and vehicle today!
+            home or office today!
           </p>
           <p className="text-xs text-[#d9f941] font-mono">
             Press any location sticker to pre-select it in the 60-second booking form below

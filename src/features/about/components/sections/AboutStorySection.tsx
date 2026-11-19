@@ -2,6 +2,7 @@
 
 import { Phone, ShieldCheck, Sun, ThermometerSnowflake, Zap } from 'lucide-react';
 import { ASSETS } from '@/config/assets';
+import { ALL_SERVICES } from '@/features/services';
 import { SITE_CONFIG } from '@/config/site';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
 
@@ -33,12 +34,12 @@ export default function AboutStorySection() {
             leading provider of <strong className="text-white">window tinting Qatar</strong> and
             advanced surface protection services. We specialize in{' '}
             <strong className="text-white">
-              car window tinting Qatar, commercial window tinting Doha, residential window tinting
-              near me, customized cut frosted window film designs, marble protection film, and
-              fabric nano coating Qatar
+              sun control window film, surface protection film, frosted &amp; decorative film,
+              fabric nano coating, wallpaper &amp; wall finishing, smart film, and safety &amp;
+              security film
             </strong>
-            . Whether you drive a supercar in Lusail, manage a corporate tower in West Bay, or own
-            a family villa in Al Rayyan, our mission is simple:{' '}
+            . Whether you manage a corporate tower in West Bay, run a clinic in Lusail, or own a
+            family villa in Al Rayyan, our mission is simple:{' '}
             <span className="text-[#d9f941] font-bold">
               reduce heat, block 99.9% of UV rays, enhance privacy, and protect your most valuable
               surfaces.
@@ -85,8 +86,8 @@ export default function AboutStorySection() {
                 </h2>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Enjoy added peace of mind with vehicle window tinting near me and house window
-                tinting.
+                Daytime privacy films, frosted and smart glass, and safety film that holds
+                broken glass together.
               </p>
             </div>
 
@@ -144,82 +145,35 @@ export default function AboutStorySection() {
                 Let Us Work While You Unwind!
               </h2>
               <p className="text-xs font-medium text-black/80 leading-relaxed">
-                From mobile car tinting in your private villa garage to commercial curtain walls,
-                marble kitchen islands, and Majlis sofa nano coating—we bring certified quality
-                straight to your door.
+                From villa windows and commercial curtain walls to marble kitchen islands,
+                feature walls and Majlis sofas—we bring certified quality straight to your door.
               </p>
             </div>
           </div>
 
-          {/* 2x2 Real Project Photo Mosaic */}
+          {/* 2x2 project photo mosaic (first four services) */}
           <div className="grid grid-cols-2 gap-4">
-            <div
-              onClick={() => onSelectService('automotive-window-tinting')}
-              className="rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] bg-[#1a1922] cursor-pointer group relative aspect-[16/11]"
-            >
-              <img
-                src={ASSETS.services.automotive}
-                alt="Automotive Window Tinting Qatar"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
-                <span className="px-2 py-0.5 rounded bg-[#f27438] text-[#121118] font-mono font-extrabold text-[10px] border border-black">
-                  01 · CAR TINTING
-                </span>
+            {ALL_SERVICES.slice(0, 4).map((service) => (
+              <div
+                key={service.slug}
+                onClick={() => onSelectService(service.slug)}
+                className="rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] bg-[#1a1922] cursor-pointer group relative aspect-[16/11]"
+              >
+                <img
+                  src={service.image}
+                  alt={service.alt}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
+                  <span
+                    className={`px-2 py-0.5 rounded ${service.bgClass} text-[#121118] font-mono font-extrabold text-[10px] border border-black uppercase`}
+                  >
+                    {service.num} · {service.shortTitle}
+                  </span>
+                </div>
               </div>
-            </div>
-
-            <div
-              onClick={() => onSelectService('commercial-window-tinting')}
-              className="rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] bg-[#1a1922] cursor-pointer group relative aspect-[16/11]"
-            >
-              <img
-                src={ASSETS.services.commercial}
-                alt="Commercial Window Tinting Doha"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
-                <span className="px-2 py-0.5 rounded bg-[#d9f941] text-[#121118] font-mono font-extrabold text-[10px] border border-black">
-                  02 · COMMERCIAL DOHA
-                </span>
-              </div>
-            </div>
-
-            <div
-              onClick={() => onSelectService('marble-protection-film')}
-              className="rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] bg-[#1a1922] cursor-pointer group relative aspect-[16/11]"
-            >
-              <img
-                src={ASSETS.services.marbleProtection}
-                alt="Marble Protection Film Qatar"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
-                <span className="px-2 py-0.5 rounded bg-[#f45b9a] text-[#121118] font-mono font-extrabold text-[10px] border border-black">
-                  05 · MARBLE SHIELD
-                </span>
-              </div>
-            </div>
-
-            <div
-              onClick={() => onSelectService('fabric-nano-coating-service')}
-              className="rounded-2xl overflow-hidden border-2 border-black shadow-[4px_4px_0px_#000] bg-[#1a1922] cursor-pointer group relative aspect-[16/11]"
-            >
-              <img
-                src={ASSETS.services.fabricNanoCoating}
-                alt="Fabric Nano Coating Sofa Qatar"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
-                <span className="px-2 py-0.5 rounded bg-[#a78bfa] text-[#121118] font-mono font-extrabold text-[10px] border border-black">
-                  06 · SOFA NANO COAT
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* 4 Authority Numbers Row */}

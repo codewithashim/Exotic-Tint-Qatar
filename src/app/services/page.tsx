@@ -11,7 +11,7 @@ import {
 
 const TITLE = 'Window Tinting & Protection Services in Qatar';
 const DESCRIPTION =
-  'Automotive, commercial and residential window tinting, custom frosted film, marble protection film and fabric nano coating in Qatar.';
+  'Sun control window film, surface protection film, frosted & decorative film, fabric nano coating, wallpaper, smart film and safety & security film in Qatar.';
 
 export const metadata = buildPageMetadata({ title: TITLE, description: DESCRIPTION, path: ROUTES.services });
 

@@ -22,13 +22,13 @@ export default function ServicesHubSubHeader() {
             </SiteLink>
             <span className="text-slate-600 font-mono">/</span>
             <span className="text-[#d9f941] font-extrabold whitespace-nowrap">
-              Our 6 Premium Services
+              Our {ALL_SERVICES.length} Premium Services
             </span>
           </div>
 
           <div className="hidden sm:flex items-center gap-2">
             <span className="px-2.5 py-1 rounded-md bg-[#121118] border border-white/15 font-mono text-[11px] font-bold text-slate-300 whitespace-nowrap">
-              ALL 6 QATAR SOLUTIONS
+              ALL {ALL_SERVICES.length} QATAR SOLUTIONS
             </span>
             <a
               href="#services-hub-booking"
@@ -39,8 +39,8 @@ export default function ServicesHubSubHeader() {
           </div>
         </div>
 
-        {/* Row 2: 6-Service Quick Jump Bento Grid (Zero Scrollbar) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-1">
+        {/* Row 2: service quick-jump grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-1">
           {ALL_SERVICES.map((item) => (
             <SiteLink
               key={item.slug}

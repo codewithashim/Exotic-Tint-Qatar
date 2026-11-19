@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { ServiceDetail } from '@/features/services/data/services-data';
+import { ALL_SERVICES, type ServiceDetail } from '@/features/services/data/services-data';
 import SiteLink from '@/components/ui/SiteLink';
 import { ROUTES } from '@/config/routes';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
@@ -26,7 +26,7 @@ export default function ServicesCatalogGrid({
             COMPLETE SERVICE CATALOG
           </span>
           <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-white mt-0.5">
-            Showing {filteredServices.length} of 6 Specialized Services
+            Showing {filteredServices.length} of {ALL_SERVICES.length} Specialized Services
           </h2>
         </div>
         <p className="text-xs font-mono text-[#d9f941]">

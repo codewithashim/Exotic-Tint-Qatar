@@ -7,7 +7,7 @@ import SiteLink from '@/components/ui/SiteLink';
 import { ROUTES } from '@/config/routes';
 import { useSiteNavigation } from '@/hooks/use-site-navigation';
 
-/** Bento grid of all 6 services; each card links to its detail page. */
+/** Bento grid of every service; each card links to its detail page. */
 export default function ServicesBentoSection() {
   const { openService: openServiceDetailPage } = useSiteNavigation();
 
@@ -24,18 +24,18 @@ export default function ServicesBentoSection() {
           </p>
         </div>
         <span className="text-xs font-mono font-bold text-[#d9f941]">
-          6 Specialized Pages →
+          {ALL_SERVICES.length} Specialized Pages →
         </span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        {/* 01. Big Left Orange Feature Card: Automotive Window Tinting */}
+        {/* Big left feature card: service 01 */}
         <article
           onClick={() => openServiceDetailPage(ALL_SERVICES[0].slug)}
-          className="lg:col-span-5 lg:row-span-2 rounded-3xl bg-[#f27438] text-[#121118] border-2 border-black shadow-[6px_6px_0px_#000] p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:translate-y-[-3px] transition-transform"
+          className={`lg:col-span-5 lg:row-span-2 rounded-3xl ${ALL_SERVICES[0].bgClass} text-[#121118] border-2 border-black shadow-[6px_6px_0px_#000] p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:translate-y-[-3px] transition-transform`}
         >
           <div className="flex items-center justify-between gap-2">
-            <span className="font-mono font-extrabold text-sm">01</span>
+            <span className="font-mono font-extrabold text-sm">{ALL_SERVICES[0].num}</span>
             <span className="px-3 py-1 rounded-md bg-white border-2 border-black font-mono font-extrabold text-[10px] sm:text-[11px] uppercase shadow-[2px_2px_0px_#000]">
               {ALL_SERVICES[0].badge}
             </span>
@@ -70,7 +70,7 @@ export default function ServicesBentoSection() {
           </div>
         </article>
 
-        {/* Right 2x2 Bento Sub-Grid for Services 02, 03, 04, 05 */}
+        {/* Right 2x2 sub-grid: services 02–05 */}
         <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
           {ALL_SERVICES.slice(1, 5).map((service) => (
             <article
@@ -122,39 +122,40 @@ export default function ServicesBentoSection() {
         </div>
       </div>
 
-      {/* Bottom 2 Wide Banner Cards: 06 Fabric Nano Coating + Direct Call Banner */}
-      <div id="blogs" className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
-        <article
-          onClick={() => openServiceDetailPage(ALL_SERVICES[5].slug)}
-          className="rounded-3xl bg-[#a78bfa] text-[#121118] border-2 border-black shadow-[6px_6px_0px_#000] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 cursor-pointer hover:translate-y-[-2px] transition-transform group"
-        >
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 min-w-0 w-full">
-            <div className="w-full sm:w-36 aspect-[16/10] sm:aspect-[4/3] rounded-2xl bg-[#0d1117] border-2 border-black shadow-[3px_3px_0px_#000] overflow-hidden shrink-0">
-              <img
-                loading="lazy"
-                decoding="async"
-                src={ALL_SERVICES[5].image}
-                alt={ALL_SERVICES[5].alt}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-              />
+      {/* Bottom row: remaining services as wide banner cards + direct call banner */}
+      <div id="blogs" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+        {ALL_SERVICES.slice(5).map((service) => (
+          <article
+            key={service.id}
+            onClick={() => openServiceDetailPage(service.slug)}
+            className={`rounded-3xl ${service.bgClass} text-[#121118] border-2 border-black shadow-[6px_6px_0px_#000] p-5 sm:p-6 flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-start justify-between gap-4 cursor-pointer hover:translate-y-[-2px] transition-transform group`}
+          >
+            <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-start gap-4 min-w-0 w-full">
+              <div className="w-full sm:w-28 lg:w-full aspect-[16/10] sm:aspect-square lg:aspect-[16/10] rounded-2xl bg-[#0d1117] border-2 border-black shadow-[3px_3px_0px_#000] overflow-hidden shrink-0">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={service.image}
+                  alt={service.alt}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="font-mono font-extrabold text-[10px] sm:text-xs uppercase bg-white px-2 py-0.5 rounded border border-black">
+                  {service.num} · {service.badge}
+                </span>
+                <h3 className="font-display font-extrabold text-lg sm:text-2xl tracking-tight mt-1">
+                  <SiteLink href={ROUTES.service(service.slug)} onClick={(e) => e.stopPropagation()}>
+                    {service.title}
+                  </SiteLink>
+                </h3>
+                <p className="text-xs font-medium text-black/85 mt-1">{service.desc}</p>
+              </div>
             </div>
-            <div className="min-w-0 flex-1">
-              <span className="font-mono font-extrabold text-[10px] sm:text-xs uppercase bg-white px-2 py-0.5 rounded border border-black">
-                06 · {ALL_SERVICES[5].badge}
-              </span>
-              <h3 className="font-display font-extrabold text-lg sm:text-2xl tracking-tight mt-1">
-                <SiteLink href={ROUTES.service(ALL_SERVICES[5].slug)} onClick={(e) => e.stopPropagation()}>
-                  {ALL_SERVICES[5].title}
-                </SiteLink>
-              </h3>
-              <p className="text-xs font-medium text-black/85 mt-1">
-                {ALL_SERVICES[5].desc}
-              </p>
-            </div>
-          </div>
-          <ArrowRight className="w-6 h-6 shrink-0 group-hover:translate-x-1 transition-transform self-end sm:self-center" />
-        </article>
+            <ArrowRight className="w-6 h-6 shrink-0 group-hover:translate-x-1 transition-transform self-end sm:self-center" />
+          </article>
+        ))}
 
         <a
           href={SITE_CONFIG.phone.href}

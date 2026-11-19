@@ -25,7 +25,7 @@ export default function BlogHubSearchHeader({
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
             Expert insights on beating 50°C Doha heat, lowering Kahramaa AC bills, choosing
-            Qatar-compliant car window tints, and protecting luxury marble countertops and
+            privacy films for offices and villas, and protecting luxury marble countertops and
             Majlis sofas.
           </p>
         </div>

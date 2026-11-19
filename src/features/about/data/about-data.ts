@@ -2,22 +2,6 @@ import { ASSETS } from '@/config/assets';
 
 export const HEAT_LAB_SCENARIOS = [
   {
-    id: 'car-cabin',
-    label: 'Car & SUV Cabin (Parked in Doha Sun)',
-    icon: '🚗',
-    unprotectedTemp: '68°C Dashboard',
-    protectedTemp: '39°C Cool Cabin',
-    irRejected: '96% IR Blocked',
-    uvBlocked: '99.9% UV Shield',
-    energySaved: '-40% AC Cool-Down Time',
-    summary:
-      'Multi-layer nano-ceramic car window tinting stops infrared heat before it enters your glass, keeping leather seats cool and protecting dashboards from cracking.',
-    recommendedSlug: 'automotive-window-tinting',
-    recommendedTitle: 'Automotive Window Tinting',
-    image: ASSETS.services.automotive,
-    bgClass: 'bg-[#f27438]',
-  },
-  {
     id: 'villa-living',
     label: 'Residential Villa (Lusail / Al Rayyan / Pearl)',
     icon: '🏡',
@@ -28,8 +12,8 @@ export const HEAT_LAB_SCENARIOS = [
     energySaved: 'Up to 30% Lower AC Bill',
     summary:
       'Residential ceramic and daytime one-way privacy films let your family enjoy sunlit rooms and open curtains without neighbors seeing in or UV rays fading silk carpets.',
-    recommendedSlug: 'residential-window-tinting',
-    recommendedTitle: 'Residential Window Tinting',
+    recommendedSlug: 'sun-control-window-film',
+    recommendedTitle: 'Sun Control Window Film',
     image: ASSETS.services.residential,
     bgClass: 'bg-[#6ee7b7]',
   },
@@ -44,8 +28,8 @@ export const HEAT_LAB_SCENARIOS = [
     energySaved: '-32% HVAC Chiller Load',
     summary:
       'Architectural solar-control, one-way mirror, and CNC frosted partition films slash commercial electricity bills while upgrading employee comfort and boardroom privacy.',
-    recommendedSlug: 'commercial-window-tinting',
-    recommendedTitle: 'Commercial Window Tinting',
+    recommendedSlug: 'sun-control-window-film',
+    recommendedTitle: 'Sun Control Window Film',
     image: ASSETS.services.commercial,
     bgClass: 'bg-[#d9f941]',
   },
@@ -60,7 +44,7 @@ export const HEAT_LAB_SCENARIOS = [
     energySaved: 'Saves 15,000+ QAR Refinishing',
     summary:
       'Combine optically clear self-healing TPU marble protection film with hydrophobic SiO2 sofa nano coating so coffee, lemon juice, and food spills wipe away effortlessly.',
-    recommendedSlug: 'marble-protection-film',
+    recommendedSlug: 'surface-protection-film',
     recommendedTitle: 'Marble & Sofa Protection',
     image: ASSETS.services.marbleProtection,
     bgClass: 'bg-[#f45b9a]',
@@ -77,44 +61,44 @@ export interface ZoneDispatchDetail {
 export const ZONE_DISPATCH_DETAILS: Record<string, ZoneDispatchDetail> = {
   Lusail: {
     eta: '25 – 35 Mins Mobile Dispatch',
-    popular: 'Villa Window Tinting, Marble Island Shield & Car Home Service',
+    popular: 'Villa Sun Control Film, Marble Island Shield & Smart Film',
     highlight: 'Serving Fox Hills, Waterfront, Marina & Yasmeen City daily.',
-    slug: 'residential-window-tinting',
+    slug: 'sun-control-window-film',
   },
   'Pearl qatar': {
     eta: '25 – 35 Mins Mobile Dispatch',
     popular: 'HOA-Compliant Clear Ceramic Glass Tint & Sofa Nano Coating',
     highlight: 'Serving Porto Arabia, Viva Bahriya, Qanat Quartier & Giardino.',
-    slug: 'fabric-nano-coating-service',
+    slug: 'fabric-nano-coating',
   },
   Doha: {
     eta: '20 – 30 Mins Studio & On-Site',
-    popular: 'Commercial Office Tinting, CNC Frosted Logos & Studio Car Tint',
+    popular: 'Commercial Sun Control, Frosted Logos & Smart Film',
     highlight: 'Serving West Bay, Msheireb, Al Sadd, Bin Mahmoud & Old Airport.',
-    slug: 'commercial-window-tinting',
+    slug: 'sun-control-window-film',
   },
   'Al kheesa': {
     eta: '25 – 35 Mins Mobile Dispatch',
-    popular: 'Mobile Car Window Tinting Home Service & Full Villa Privacy Tint',
-    highlight: 'Fast garage-side mobile car tinting & family villa glass protection.',
-    slug: 'automotive-window-tinting',
+    popular: 'Villa Privacy Film, Safety Film & Wallpaper',
+    highlight: 'Family villa glass protection, privacy and safety film.',
+    slug: 'sun-control-window-film',
   },
   'Al garaffa': {
     eta: '25 – 35 Mins Mobile Dispatch',
     popular: 'Majlis Sofa Nano Coating, Marble Table Film & House Window Tinting',
     highlight: 'Complete interior surface armor and solar window films for family villas.',
-    slug: 'fabric-nano-coating-service',
+    slug: 'fabric-nano-coating',
   },
   'Al Rayyan': {
     eta: '30 – 40 Mins Mobile Dispatch',
-    popular: 'Heat Rejection Villa Window Film & SUV Ceramic Tinting',
+    popular: 'Heat Rejection Villa Window Film & Surface Protection',
     highlight: 'Maximum infrared heat rejection for standalone compounds and villas.',
-    slug: 'residential-window-tinting',
+    slug: 'sun-control-window-film',
   },
   Wakra: {
     eta: '30 – 45 Mins Mobile Dispatch',
-    popular: 'Vehicle Window Tinting Near Me & Home Window Tinting Qatar',
+    popular: 'Home Window Film, Fabric Nano Coating & Wallpaper',
     highlight: 'Dedicated mobile teams serving Al Wakrah and Al Mashaf 7 days a week.',
-    slug: 'automotive-window-tinting',
+    slug: 'sun-control-window-film',
   },
 };

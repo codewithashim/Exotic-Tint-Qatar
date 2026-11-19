@@ -16,7 +16,7 @@ export default function ServicesComparisonMatrix() {
               TECHNICAL SPECIFICATION OVERVIEW
             </span>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">
-              Compare All 6 Exotic Tint Qatar Solutions
+              Compare All {ALL_SERVICES.length} Exotic Tint Qatar Solutions
             </h2>
           </div>
           <button

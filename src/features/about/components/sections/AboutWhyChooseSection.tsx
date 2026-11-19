@@ -13,8 +13,8 @@ export default function AboutWhyChooseSection() {
             Affordable Flat-Rate Pricing
           </h3>
           <p className="text-xs sm:text-sm font-medium text-black/85 leading-relaxed">
-            No hidden fees—just premium-quality tint and protection for your car, villa, office,
-            marble countertops, and sofas across Qatar.
+            No hidden fees—just premium-quality films and finishes for your villa, office, glass,
+            marble, furniture, sofas and walls across Qatar.
           </p>
         </div>
 

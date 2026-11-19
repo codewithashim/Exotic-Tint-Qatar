@@ -16,9 +16,9 @@ export default function ContactChannelsSection() {
         <p className="text-xs sm:text-base text-slate-300 leading-relaxed">
           📞 Contact Exotic Tint Qatar today at{' '}
           <strong className="text-white font-mono">+974 31608423</strong> for expert window
-          tinting Qatar and surface protection services. Whether you need car window tinting
-          Qatar, commercial window tinting Doha, residential window tinting near me, or nano
-          coating for sofa, we’ve got you covered.{' '}
+          tinting Qatar and surface protection services. Whether you need sun control film for
+          your villa or office, frosted, smart or safety film, surface protection, fabric nano
+          coating or premium wallpaper, we’ve got you covered.{' '}
           <strong className="text-[#f27438]">Let us work while you unwind!</strong>
         </p>
       </div>
@@ -73,7 +73,7 @@ export default function ContactChannelsSection() {
               8:00 AM – 6:00 PM
             </p>
             <p className="text-xs font-semibold text-black/80">
-              Open every day including weekends for villa, car &amp; commercial bookings.
+              Open every day including weekends for villa &amp; commercial bookings.
             </p>
           </div>
           <span className="mt-4 pt-3 border-t border-black/20 text-xs font-mono font-extrabold">

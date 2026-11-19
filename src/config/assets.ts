@@ -28,12 +28,15 @@ export const ASSETS = {
     heroStudio: '/videos/hero-tinting-studio.mp4',
   },
   services: {
-    automotive: '/images/services/automotive-window-tinting.webp',
     commercial: '/images/services/commercial-window-tinting.webp',
     residential: '/images/services/residential-window-tinting.webp',
     frostedFilm: '/images/services/frosted-film-custom-cut.webp',
     marbleProtection: '/images/services/marble-protection-film.webp',
     fabricNanoCoating: '/images/services/fabric-nano-coating.webp',
+    /** Branded placeholder graphics — replace with real project photos when available. */
+    wallpaper: '/images/services/wallpaper-wall-finishing.webp',
+    smartFilm: '/images/services/smart-film.webp',
+    safetyFilm: '/images/services/safety-security-film.webp',
   },
   og: {
     /** 1200×630 fallback share image for pages without their own image. */
@@ -49,11 +52,13 @@ export const ASSET_DIMENSIONS: Record<string, { width: number; height: number }>
   [ASSETS.brand.logo]: { width: 320, height: 320 },
   [ASSETS.brand.logoMark]: { width: 256, height: 256 },
   [ASSETS.brand.logoPng]: { width: 512, height: 512 },
-  [ASSETS.services.automotive]: { width: 1024, height: 1024 },
   [ASSETS.services.commercial]: { width: 1024, height: 1024 },
   [ASSETS.services.residential]: { width: 1024, height: 1024 },
   [ASSETS.services.frostedFilm]: { width: 1024, height: 1024 },
   [ASSETS.services.marbleProtection]: { width: 1536, height: 815 },
   [ASSETS.services.fabricNanoCoating]: { width: 1000, height: 667 },
+  [ASSETS.services.wallpaper]: { width: 1024, height: 1024 },
+  [ASSETS.services.smartFilm]: { width: 1024, height: 1024 },
+  [ASSETS.services.safetyFilm]: { width: 1024, height: 1024 },
   [ASSETS.og.default]: { width: 1200, height: 630 },
 };

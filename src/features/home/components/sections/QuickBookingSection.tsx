@@ -78,7 +78,7 @@ export default function QuickBookingSection() {
               </li>
               <li>
                 • <strong>Advanced Tint &amp; Protection Solutions:</strong> Enhance
-                privacy, UV protection, and energy efficiency for cars, homes, and offices.
+                privacy, UV protection, and energy efficiency for homes and offices.
               </li>
             </ul>
           </div>
@@ -210,9 +210,9 @@ export default function QuickBookingSection() {
             <p className="text-xs font-semibold text-black/85 leading-relaxed">
               📞 Contact Exotic Tint Qatar today at{' '}
               <strong className="font-mono">+974 31608423</strong> for expert window tinting
-              Qatar and surface protection services. Whether you need car window tinting
-              Qatar, commercial window tinting Doha, residential window tinting near me, or
-              nano coating for sofa, we’ve got you covered.{' '}
+              Qatar and surface protection services. Whether you need sun control film for
+              your villa or office, frosted, smart or safety film, surface protection, fabric
+              nano coating or premium wallpaper, we’ve got you covered.{' '}
               <strong>Let us work while you unwind!</strong>
             </p>
           </div>

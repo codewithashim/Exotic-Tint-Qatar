@@ -47,8 +47,8 @@ export default function TrustBenefitsSection() {
               Privacy &amp; Security
             </h3>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Enjoy added peace of mind with vehicle window tinting near me and house window
-              tinting.
+              Daytime privacy films, frosted and smart glass, and safety film that holds
+              broken glass together.
             </p>
           </div>
 

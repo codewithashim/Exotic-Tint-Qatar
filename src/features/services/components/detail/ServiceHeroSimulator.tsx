@@ -2,7 +2,10 @@
 
 import { CheckCircle2, Phone, SlidersHorizontal } from 'lucide-react';
 import { SITE_CONFIG } from '@/config/site';
-import { type SimulatorOption } from '@/features/services/data/services-data';
+import {
+  DEFAULT_SPEC_LABELS,
+  type SimulatorOption,
+} from '@/features/services/data/services-data';
 import type { ServiceDetail } from '@/features/services/data/services-data';
 
 interface ServiceHeroSimulatorProps {
@@ -19,6 +22,7 @@ export default function ServiceHeroSimulator({
   setSelectedSimIdx,
   activeSim,
 }: ServiceHeroSimulatorProps) {
+  const specLabels = service.specLabels ?? DEFAULT_SPEC_LABELS;
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
@@ -163,25 +167,25 @@ export default function ServiceHeroSimulator({
             {/* 4 Live Spec Mini-Meters */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
               <div className="p-2.5 rounded-xl bg-[#121118] border border-white/10 text-center">
-                <p className="text-[10px] font-mono text-slate-400 uppercase">Heat / Thermal</p>
+                <p className="text-[10px] font-mono text-slate-400 uppercase">{specLabels[0]}</p>
                 <p className="font-mono font-extrabold text-xs sm:text-sm text-[#f27438] mt-0.5">
                   {activeSim.irRejection}
                 </p>
               </div>
               <div className="p-2.5 rounded-xl bg-[#121118] border border-white/10 text-center">
-                <p className="text-[10px] font-mono text-slate-400 uppercase">UV Defense</p>
+                <p className="text-[10px] font-mono text-slate-400 uppercase">{specLabels[1]}</p>
                 <p className="font-mono font-extrabold text-xs sm:text-sm text-[#d9f941] mt-0.5">
                   {activeSim.uvBlock}
                 </p>
               </div>
               <div className="p-2.5 rounded-xl bg-[#121118] border border-white/10 text-center">
-                <p className="text-[10px] font-mono text-slate-400 uppercase">Protection</p>
+                <p className="text-[10px] font-mono text-slate-400 uppercase">{specLabels[2]}</p>
                 <p className="font-mono font-extrabold text-xs sm:text-sm text-[#6ee7b7] mt-0.5">
                   {activeSim.glareOrStainReduction}
                 </p>
               </div>
               <div className="p-2.5 rounded-xl bg-[#121118] border border-white/10 text-center">
-                <p className="text-[10px] font-mono text-slate-400 uppercase">Warranty</p>
+                <p className="text-[10px] font-mono text-slate-400 uppercase">{specLabels[3]}</p>
                 <p className="font-mono font-extrabold text-xs sm:text-sm text-[#a78bfa] mt-0.5">
                   {activeSim.warranty}
                 </p>

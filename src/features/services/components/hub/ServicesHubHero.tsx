@@ -1,7 +1,7 @@
 'use client';
 
 import { Sparkles } from 'lucide-react';
-import { ServiceDetail } from '@/features/services/data/services-data';
+import { ALL_SERVICES, type ServiceDetail } from '@/features/services/data/services-data';
 import {
   FILTER_TABS,
   QUICK_MATCHER_OPTIONS,
@@ -39,8 +39,8 @@ export default function ServicesHubHero({
           </div>
 
           <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.35rem] leading-[1.02] tracking-tight text-white">
-            6 Specialized Solutions for{' '}
-            <span className="text-[#f27438]">Cars, Villas &amp; Offices</span> in Qatar
+            {ALL_SERVICES.length} Specialized Solutions for{' '}
+            <span className="text-[#f27438]">Villas, Homes &amp; Offices</span> in Qatar
           </h1>
 
           <p className="font-display font-extrabold text-base sm:text-xl text-[#6ee7b7] leading-snug">
@@ -49,14 +49,15 @@ export default function ServicesHubHero({
           </p>
 
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Whether you need <strong className="text-white">car window tinting Qatar</strong>{' '}
-            (with convenient mobile home garage installation),{' '}
-            <strong className="text-white">commercial window tinting Doha</strong>,{' '}
-            <strong className="text-white">residential window tinting near me</strong>,{' '}
-            <strong className="text-white">customized cut frosted film designs</strong>,{' '}
-            <strong className="text-white">marble &amp; wooden table protection film</strong>, or{' '}
-            <strong className="text-white">fabric nano coating for sofas and carpets</strong>,
-            Exotic Tint Qatar delivers certified craftsmanship across Doha, Lusail, The Pearl, Al
+            Whether you need <strong className="text-white">sun control window film</strong>{' '}
+            for your villa or office,{' '}
+            <strong className="text-white">surface protection film</strong> for marble, stone,
+            steel and wood, <strong className="text-white">frosted &amp; decorative film</strong>,{' '}
+            <strong className="text-white">fabric nano coating</strong>,{' '}
+            <strong className="text-white">premium wallpaper</strong>,{' '}
+            <strong className="text-white">smart film</strong> or{' '}
+            <strong className="text-white">safety &amp; security film</strong>, Exotic Tint Qatar
+            delivers certified craftsmanship across Doha, Lusail, The Pearl, Al
             Kheesa, Al Gharrafa, Al Rayyan, and Wakra.
           </p>
 

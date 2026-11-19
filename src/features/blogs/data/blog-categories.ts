@@ -1,7 +1,6 @@
 /** Category filter tabs on the blog hub ("All Guides" shows everything). */
 export const BLOG_CATEGORIES = [
   'All Guides',
-  'Automotive Tinting',
   'Commercial Tinting',
   'Residential Tinting',
   'Frosted Film Designs',

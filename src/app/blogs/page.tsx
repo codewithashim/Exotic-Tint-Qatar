@@ -11,7 +11,7 @@ import {
 
 const TITLE = 'Window Tinting & Heat Protection Blog';
 const DESCRIPTION =
-  'Expert guides on car and home window tinting, heat rejection, frosted film, marble protection and fabric nano coating in Qatar.';
+  'Expert guides on home and office window film, heat rejection, frosted film, marble protection and fabric nano coating in Qatar.';
 
 // `?category=` only filters on the client; the canonical stays `/blogs` for every variant.
 export const metadata = buildPageMetadata({ title: TITLE, description: DESCRIPTION, path: ROUTES.blogs });

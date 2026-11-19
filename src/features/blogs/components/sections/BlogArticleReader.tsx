@@ -184,7 +184,7 @@ export default function BlogArticleReader({ activePost }: BlogArticleReaderProps
             href={ROUTES.blogs}
             className="text-xs font-mono font-bold text-[#d9f941] underline cursor-pointer"
           >
-            View All 6 Guides →
+            View All {BLOG_POSTS.length} Guides →
           </SiteLink>
         </div>
 

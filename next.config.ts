@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { LEGACY_REDIRECTS } from './src/config/legacy-redirects.ts';
 import { SITE_URL } from './src/lib/seo/site-url.ts';
 
 /**
@@ -28,7 +29,10 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   transpilePackages: ['motion'],
   async redirects() {
-    return canonicalHostRedirects();
+    return [
+      ...canonicalHostRedirects(),
+      ...LEGACY_REDIRECTS.map((r) => ({ ...r, permanent: true })),
+    ];
   },
 };
 
