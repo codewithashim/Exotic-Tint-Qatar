@@ -1,7 +1,8 @@
 # Exotic Tint Qatar
 
-Marketing and booking website for **Exotic Tint Qatar**: automotive, commercial and residential
-window tinting, custom frosted film, marble protection film and fabric nano coating in Doha, Qatar.
+Marketing and booking website for **Exotic Tint Qatar**: sun control window film (commercial &
+residential), surface protection film, frosted & decorative film, fabric nano coating, wallpaper &
+wall finishing, smart film and safety & security film in Doha, Qatar.
 
 Built with **Next.js 16** (App Router, Turbopack), **React 19**, **TypeScript** and **Tailwind CSS 4**.
 Every page is statically pre-rendered at build time.
@@ -10,12 +11,12 @@ Every page is statically pre-rendered at build time.
 
 | Route | Content |
 | --- | --- |
-| `/` | Video hero, benefits, Instagram reels, service areas, 60-second booking form, services grid, reviews |
+| `/` | Image hero, benefits, Instagram reels, service areas, 60-second booking form, services grid, reviews |
 | `/about` | Company story, heat & ROI lab, dispatch zones, consultation form |
 | `/services` | All services, solution matcher, comparison table, booking form |
-| `/services/[slug]` | One page per service (6), with simulator, estimator, FAQ and booking form |
+| `/services/[slug]` | One page per service (7), with simulator, estimator, FAQ and booking form |
 | `/gallery` | Before/after slider, filterable photo/video portfolio, lightbox |
-| `/blogs`, `/blogs/[slug]` | Blog hub with category filter and search, plus one page per article (6) |
+| `/blogs`, `/blogs/[slug]` | Blog hub with category filter and search, plus one page per article (5) |
 | `/contact` | Contact channels, full booking form, service areas, FAQ |
 
 ## Getting started
@@ -76,6 +77,7 @@ See **[ARCHITECTURE.md](ARCHITECTURE.md)** for the full layout and the coding co
 | Phone number, WhatsApp, opening hours, social links | `src/config/site.ts` |
 | Areas offered in booking forms | `BOOKING_AREAS` in `src/config/site.ts` |
 | Services (text, specs, simulator, FAQ, images) | `src/features/services/data/services-data.ts` |
+| Redirects for removed/renamed URLs | `src/config/legacy-redirects.ts` |
 | Blog articles | `src/features/blogs/data/blogs-data.ts` |
 | Gallery projects and before/after comparisons | `src/features/gallery/data/gallery-data.ts` |
 | Client reviews | `src/features/home/data/testimonials.ts` |

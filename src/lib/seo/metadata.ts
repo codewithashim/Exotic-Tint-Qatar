@@ -15,7 +15,7 @@ export interface SeoImage {
 export interface PageSeoInput {
   title: string;
   description: string;
-  /** Internal path of the page, e.g. `/services/automotive-window-tinting`. */
+  /** Internal path of the page, e.g. `/services/sun-control-window-film`. */
   path: string;
   image?: SeoImage;
   type?: 'website' | 'article';

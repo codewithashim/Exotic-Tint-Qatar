@@ -18,7 +18,7 @@ export default function SavedShortlistBar({
   const { openContact: onOpenContact } = useSiteNavigation();
 
   return (
-    <div className="fixed bottom-16 sm:bottom-5 left-1/2 -translate-x-1/2 z-40 max-w-lg w-[calc(100%-2rem)] bg-[#1a1922]/95 backdrop-blur-xl border-2 border-black shadow-[6px_6px_0px_#000] rounded-2xl p-3 flex items-center justify-between gap-3">
+    <div className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:bottom-5 left-1/2 -translate-x-1/2 z-40 max-w-lg w-[calc(100%-2rem)] bg-[#1a1922]/95 backdrop-blur-xl border-2 border-black shadow-[6px_6px_0px_#000] rounded-2xl p-3 flex items-center justify-between gap-3">
       <div className="flex items-center gap-2.5 min-w-0">
         <span className="w-8 h-8 rounded-xl bg-[#f45b9a] text-[#121118] border border-black font-mono font-extrabold text-xs flex items-center justify-center shrink-0">
           {savedIds.length}

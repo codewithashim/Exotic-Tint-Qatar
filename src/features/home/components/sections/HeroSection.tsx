@@ -1,47 +1,59 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { preload } from 'react-dom';
 import { ArrowUpRight, Pause, Phone, Play } from 'lucide-react';
 import { ASSETS } from '@/config/assets';
 import SiteLink from '@/components/ui/SiteLink';
 import { ROUTES } from '@/config/routes';
 import { SITE_CONFIG } from '@/config/site';
+import { ALL_SERVICES } from '@/features/services';
+
+/** Poster shown until the video plays (and the LCP image). */
+const HERO_POSTER = ASSETS.services.residential;
 
 /** Full-screen video hero with headline, primary CTAs and headline stats. */
 export default function HeroSection() {
-  // The video poster is the first thing painted (LCP candidate): fetch it with high priority.
-  preload(ASSETS.services.automotive, { as: 'image', fetchPriority: 'high' });
-  const [heroVideoPlaying, setHeroVideoPlaying] = useState(true);
+  // The poster is the first thing painted (LCP candidate): fetch it with high priority.
+  preload(HERO_POSTER, { as: 'image', fetchPriority: 'high' });
   const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+  // Mirrors the <video> element's real state via its play/pause events.
+  const [heroVideoPlaying, setHeroVideoPlaying] = useState(true);
+
+  // Respect "reduce motion": keep the still poster instead of an autoplaying video.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      heroVideoRef.current?.pause();
+    }
+  }, []);
 
   const toggleHeroVideo = () => {
     const vid = heroVideoRef.current;
     if (!vid) return;
-    if (vid.paused) {
-      vid.play().catch(() => {});
-      setHeroVideoPlaying(true);
-    } else {
-      vid.pause();
-      setHeroVideoPlaying(false);
-    }
+    if (vid.paused) vid.play().catch(() => {});
+    else vid.pause();
   };
 
   return (
     <section className="relative w-full min-h-[calc(100dvh-4.25rem)] flex flex-col justify-between overflow-hidden border-b-4 border-black bg-[#07090e]">
-      {/* 100% Full-Screen Edge-to-Edge 1080p Studio Video Background */}
+      {/* Full-screen background video (decorative, muted) */}
       <video
         ref={heroVideoRef}
         src={ASSETS.videos.heroStudio}
-        poster={ASSETS.services.automotive}
+        poster={HERO_POSTER}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
+        aria-hidden="true"
+        tabIndex={-1}
+        onPlay={() => setHeroVideoPlaying(true)}
+        onPause={() => setHeroVideoPlaying(false)}
         className="absolute inset-0 w-full h-full object-cover object-center z-0"
       />
 
-      {/* Clean Multi-Stop Architectural Contrast Scrims (Preserves Full Video Visibility) */}
+      {/* Clean Multi-Stop Architectural Contrast Scrims */}
       <div
         aria-hidden="true"
         className="absolute inset-0 z-10 bg-gradient-to-r from-[#07090e]/90 via-[#07090e]/50 to-transparent"
@@ -51,7 +63,7 @@ export default function HeroSection() {
         className="absolute inset-0 z-10 bg-gradient-to-t from-[#07090e]/85 via-transparent to-[#07090e]/35"
       />
 
-      {/* Top Bar Inside Full-Screen Video Stage */}
+      {/* Top bar */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-5 sm:pt-7 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2.5">
           <span className="-rotate-1 bg-[#d9f941] text-[#121118] font-mono font-extrabold text-[11px] sm:text-xs px-3 py-1 rounded-lg border-2 border-black shadow-[3px_3px_0px_#000] uppercase tracking-wider">
@@ -66,9 +78,8 @@ export default function HeroSection() {
         <button
           type="button"
           onClick={toggleHeroVideo}
-          aria-label={
-            heroVideoPlaying ? 'Pause background video' : 'Play background video'
-          }
+          aria-label={heroVideoPlaying ? 'Pause background video' : 'Play background video'}
+          aria-pressed={!heroVideoPlaying}
           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-[#d9f941] text-white hover:text-[#121118] backdrop-blur-md border border-white/25 hover:border-black font-mono font-extrabold text-[11px] transition-colors cursor-pointer"
         >
           {heroVideoPlaying ? (
@@ -85,7 +96,7 @@ export default function HeroSection() {
         </button>
       </div>
 
-      {/* Center Vertically-Aligned Hero Content Over Unobstructed Full-Screen Video */}
+      {/* Center Vertically-Aligned Hero Content over the background video */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 my-auto">
         <div className="max-w-2xl space-y-5 sm:space-y-6">
           <div className="space-y-2.5">
@@ -99,7 +110,9 @@ export default function HeroSection() {
                   <span>\</span>
                 </span>
               </span>
-              <span className="block text-white mt-0.5">Best 5 Solutions!</span>
+              <span className="block text-white mt-0.5">
+                Best {ALL_SERVICES.length} Solutions!
+              </span>
             </h1>
 
             <p className="font-display font-extrabold text-base sm:text-2xl text-[#f27438] tracking-tight drop-shadow">
@@ -112,10 +125,10 @@ export default function HeroSection() {
             <span className="text-white font-bold border-b-2 border-[#f27438] pb-0.5">
               premium-quality window tinting Qatar
             </span>{' '}
-            and protective films for cars, villas, and commercial towers with{' '}
-            <strong className="text-white">Exotic Tint Qatar</strong>. From 96% IR
-            nano-ceramic car tinting and architectural solar control to CNC frosted
-            partitions, 8-mil TPU marble shields, and hydrophobic Majlis nano coating.
+            and protective films for villas, apartments, offices, and commercial towers with{' '}
+            <strong className="text-white">Exotic Tint Qatar</strong>. From sun control,
+            smart and safety films to frosted designs, surface protection for marble, steel
+            and wood, fabric nano coating, and premium wallpaper.
           </p>
 
           {/* Clean Primary & Secondary CTA Row */}

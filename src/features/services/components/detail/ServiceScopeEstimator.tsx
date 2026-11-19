@@ -116,7 +116,7 @@ export default function ServiceScopeEstimator({
               Exotic Tint Qatar vs. Ordinary Films
             </h2>
             <p className="text-xs sm:text-sm font-medium text-black/75 mt-1">
-              See why villa owners, offices, and car collectors in Doha trust our premium
+              See why villa owners and businesses in Doha trust our premium
               materials:
             </p>
 
@@ -148,15 +148,17 @@ export default function ServiceScopeEstimator({
             </div>
           </div>
 
-          {/* Verified Client Quote Inside Comparison Card */}
-          <div className="p-4 rounded-2xl bg-[#d9f941] border-2 border-black">
-            <p className="text-xs font-extrabold text-[#121118]">
-              “{service.clientReview.quote}”
-            </p>
-            <p className="text-[11px] font-mono font-bold text-black/80 mt-1">
-              — {service.clientReview.name} ({service.clientReview.role})
-            </p>
-          </div>
+          {/* Verified client quote — only shown when the service has a real review */}
+          {service.clientReview && (
+            <div className="p-4 rounded-2xl bg-[#d9f941] border-2 border-black">
+              <p className="text-xs font-extrabold text-[#121118]">
+                “{service.clientReview.quote}”
+              </p>
+              <p className="text-[11px] font-mono font-bold text-black/80 mt-1">
+                — {service.clientReview.name} ({service.clientReview.role})
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>

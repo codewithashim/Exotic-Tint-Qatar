@@ -7,7 +7,7 @@ import { breadcrumbSchema, breadcrumbTrail, jsonLdGraph } from '@/lib/seo/struct
 export const metadata = buildPageMetadata({
   title: 'Window Tinting Project Gallery – Before & After',
   description:
-    'Before/after photos and videos of car tinting, villa and office solar film, frosted glass, marble protection and sofa nano coating projects in Qatar.',
+    'Before/after photos and videos of villa and office sun control film, frosted glass, safety film, marble protection and sofa nano coating projects in Qatar.',
   path: ROUTES.gallery,
 });
 

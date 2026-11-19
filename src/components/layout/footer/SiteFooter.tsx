@@ -62,8 +62,8 @@ export default function SiteFooter() {
                 Ready to Beat Qatar’s 50°C Heat &amp; Protect Your Surfaces?
               </h2>
               <p className="text-xs sm:text-sm font-semibold text-black/75 max-w-xl leading-relaxed">
-                Book your car window tinting, villa/office solar film, 8-mil TPU marble shield, or
-                hydrophobic Majlis sofa nano coating in under 60 seconds.
+                Book sun control, frosted, smart or safety film, surface protection, sofa nano
+                coating or wallpaper in under 60 seconds.
               </p>
             </div>
 
@@ -111,9 +111,9 @@ export default function SiteFooter() {
             </div>
 
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Qatar’s specialist in 96% IR nano-ceramic car tinting, commercial &amp; villa solar
-              control films, CNC frosted partitions, 8-mil TPU marble protection, and SiO2 fabric
-              nano coating.
+              Qatar’s specialist in commercial &amp; residential sun control film, surface
+              protection film, frosted &amp; decorative film, fabric nano coating, wallpaper,
+              smart film and safety &amp; security film.
             </p>
 
             {/* 3 Performance Telemetry Mini-Boxes */}
@@ -185,11 +185,11 @@ export default function SiteFooter() {
             </ul>
           </div>
 
-          {/* Column 3: 6 Specialized Service Simulators (3 Cols) */}
+          {/* Column 3: service links (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <p className="font-mono font-extrabold text-xs uppercase tracking-wider text-[#6ee7b7] flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#6ee7b7]" />
-              <span>6 Specialized Solutions</span>
+              <span>{ALL_SERVICES.length} Specialized Solutions</span>
             </p>
             <ul className="space-y-2">
               {ALL_SERVICES.map((s) => (
@@ -283,6 +283,14 @@ export default function SiteFooter() {
               className="px-3 py-1.5 rounded-xl bg-[#161f33] hover:bg-[#6ee7b7] text-slate-200 hover:text-[#121118] font-mono font-extrabold text-[11px] border border-white/10 hover:border-black transition-colors"
             >
               WhatsApp
+            </a>
+            <a
+              href={SITE_CONFIG.socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-xl bg-[#161f33] hover:bg-[#049adb] text-slate-200 hover:text-[#121118] font-mono font-extrabold text-[11px] border border-white/10 hover:border-black transition-colors"
+            >
+              Facebook
             </a>
             <a
               href={SITE_CONFIG.socials.instagram}

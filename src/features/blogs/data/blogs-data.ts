@@ -5,7 +5,6 @@ export interface BlogPost {
   id: string;
   num: string;
   category:
-    | 'Automotive Tinting'
     | 'Commercial Tinting'
     | 'Residential Tinting'
     | 'Frosted Film Designs'
@@ -43,69 +42,9 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: 'best-car-window-tinting-qatar-nano-ceramic-guide',
-    id: 'blog-01',
-    num: '01',
-    category: 'Automotive Tinting',
-    title:
-      'Best Car Window Tinting in Qatar: How Nano-Ceramic Film Beats 50°C Doha Summers',
-    excerpt:
-      'Discover why standard dyed car tints fail in a single Gulf summer and how multi-layer nano-ceramic window film blocks up to 96% of infrared solar heat while keeping night visibility crystal clear.',
-    readTime: '4 Min Read',
-    publishDate: 'March 2026',
-    author: 'Exotic Tint Qatar Technical Team',
-    authorRole: 'Master Automotive Film Installers · Doha',
-    bgClass: 'bg-[#f27438]',
-    image: ASSETS.services.automotive,
-    alt: 'Car window tinting Qatar – Nano-ceramic automotive tint in Doha studio',
-    relatedServiceSlug: 'automotive-window-tinting',
-    relatedServiceTitle: 'Automotive Window Tinting',
-    keyTakeaways: [
-      'Infrared (IR) light—not visible brightness—is responsible for over 53% of solar cabin heat buildup in Qatar.',
-      'Nano-ceramic car window tinting rejects up to 96% of IR heat even in lighter, Qatar-compliant VLT shades (35%–70%).',
-      '100% metal-free construction guarantees zero interference with 5G phones, GPS navigation, Salik/RFID tags, and keyless entry.',
-      'Exotic Tint Qatar offers both dust-free studio installation and mobile car tinting home service in your private villa garage.',
-    ],
-    sections: [
-      {
-        heading: '1. Why Dark Dyed Tint Does Not Equal Heat Rejection in Qatar',
-        body: 'Many drivers in Doha assume that the darker a window film looks, the cooler their car will stay. Traditional dyed films simply darken the glass to reduce glare, absorbing solar energy into the pane until it radiates inward. In contrast, Exotic Tint Qatar uses microscopic non-conductive ceramic nanoparticles that selectively target and reflect the infrared spectrum (780nm–2500nm) before heat ever enters your cabin.',
-        proTip:
-          'Even a crystal-clear 70% VLT nano-ceramic film on your front windshield can reject up to 92% of infrared heat without darkening your view at night.',
-      },
-      {
-        heading: '2. Protecting Luxury Leather, Dashboards & Electronics from 99.9% UV',
-        body: 'When a Land Cruiser, Patrol, Range Rover, or Porsche 911 sits parked under the midday sun in Lusail or West Bay, interior dashboard temperatures can exceed 70°C. Ultraviolet (UV-A and UV-B) rays crack Nappa leather, warp soft-touch dashboards, and fade carbon-fiber trim. Our automotive window tinting blocks 99.9% of harmful UV radiation—acting like permanent SPF 1000 sunscreen for both your passengers and your vehicle interior.',
-      },
-      {
-        heading: '3. Mobile Car Window Tinting Home Service Across Qatar',
-        body: 'Don’t have time to wait at a workshop? Our mobile car tinting crew brings portable filtration lighting, precision plotters, and genuine nano-ceramic film rolls directly to your shaded home garage in Lusail, The Pearl-Qatar, Al Kheesa, Al Gharrafa, Al Rayyan, or Al Wakrah. Let us work while you unwind!',
-        proTip:
-          'Book a morning slot between 8:00 AM and 12:00 PM for fastest same-day mobile dispatch directly to your villa.',
-      },
-    ],
-    quickSpecComparison: [
-      {
-        metric: 'Infrared Solar Heat Blocked',
-        withExoticTint: 'Up to 96% IR Rejected',
-        withoutProtection: 'Only 10%–20% Blocked',
-      },
-      {
-        metric: 'Cabin Cool-Down Time (AC)',
-        withExoticTint: '2–3 Minutes to Ice Cold',
-        withoutProtection: '12–15 Minutes of Max AC',
-      },
-      {
-        metric: 'UV Skin & Leather Protection',
-        withExoticTint: '99.9% UV Blocked',
-        withoutProtection: 'Leather Fades & Cracks',
-      },
-    ],
-  },
-  {
     slug: 'commercial-window-tinting-doha-office-energy-savings',
     id: 'blog-02',
-    num: '02',
+    num: '01',
     category: 'Commercial Tinting',
     title:
       'Commercial Window Tinting Doha: How Offices & Towers Cut HVAC Cooling Costs by 32%',
@@ -118,8 +57,8 @@ export const BLOG_POSTS: BlogPost[] = [
     bgClass: 'bg-[#d9f941]',
     image: ASSETS.services.commercial,
     alt: 'Commercial window tinting Doha office building glass facade',
-    relatedServiceSlug: 'commercial-window-tinting',
-    relatedServiceTitle: 'Commercial Window Tinting',
+    relatedServiceSlug: 'sun-control-window-film',
+    relatedServiceTitle: 'Sun Control Window Film',
     keyTakeaways: [
       'Untreated commercial glass accounts for up to 40% of a building’s summer air-conditioning load in Doha.',
       'Architectural solar-control and one-way mirror films cut solar heat gain by up to 82% and reduce HVAC electricity consumption by up to 32%.',
@@ -163,7 +102,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'residential-window-tinting-near-me-qatar-villa-privacy',
     id: 'blog-03',
-    num: '03',
+    num: '02',
     category: 'Residential Tinting',
     title:
       'Residential Window Tinting Near Me: Daytime Privacy & Heat Rejection for Qatar Villas',
@@ -176,8 +115,8 @@ export const BLOG_POSTS: BlogPost[] = [
     bgClass: 'bg-[#6ee7b7]',
     image: ASSETS.services.residential,
     alt: 'Residential window tinting near me for luxury villa glass windows in Qatar',
-    relatedServiceSlug: 'residential-window-tinting',
-    relatedServiceTitle: 'Residential Window Tinting',
+    relatedServiceSlug: 'sun-control-window-film',
+    relatedServiceTitle: 'Sun Control Window Film',
     keyTakeaways: [
       'Enjoy natural daylight across your living room and Majlis while maintaining daytime one-way family privacy.',
       'Blocks 99.9% of UV rays that bleach expensive curtains, Persian rugs, bouclé sofas, and hardwood floors.',
@@ -221,7 +160,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'customized-cut-frosted-window-film-designs-qatar',
     id: 'blog-04',
-    num: '04',
+    num: '03',
     category: 'Frosted Film Designs',
     title:
       '2026 Guide to Customized Cut Frosted Film Designs for Doha Offices & Homes',
@@ -234,8 +173,8 @@ export const BLOG_POSTS: BlogPost[] = [
     bgClass: 'bg-[#fbbf24]',
     image: ASSETS.services.frostedFilm,
     alt: 'Customized cut frosted film designs on glass office partition in Qatar',
-    relatedServiceSlug: 'customized-cut-frosted-film',
-    relatedServiceTitle: 'Customized Cut Frosted Film',
+    relatedServiceSlug: 'frosted-decorative-film',
+    relatedServiceTitle: 'Frosted & Decorative Film',
     keyTakeaways: [
       'Delivers 24/7 day-and-night visual privacy while still transmitting 75%+ of soft, natural ambient light.',
       'Up to 70% more affordable than permanent sandblasted or acid-etched glass—and 100% removable for future rebranding.',
@@ -274,7 +213,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'marble-protection-film-qatar-stone-wooden-table-shield',
     id: 'blog-05',
-    num: '05',
+    num: '04',
     category: 'Marble & Wood Shield',
     title:
       'Marble Protection Film vs. Liquid Sealers: How to Stop Acid Etching & Scratches Forever',
@@ -287,8 +226,8 @@ export const BLOG_POSTS: BlogPost[] = [
     bgClass: 'bg-[#f45b9a]',
     image: ASSETS.services.marbleProtection,
     alt: 'Marble protection film installation on luxury stone table in Qatar',
-    relatedServiceSlug: 'marble-protection-film',
-    relatedServiceTitle: 'Marble Protection Film',
+    relatedServiceSlug: 'surface-protection-film',
+    relatedServiceTitle: 'Surface Protection Film',
     keyTakeaways: [
       'Traditional liquid stone sealers only slow down staining—they offer ZERO protection against acid etching (lemon, vinegar, soda) or physical scratches.',
       'Our 8-mil optical TPU marble protection film creates an impenetrable, invisible physical barrier over marble, onyx, travertine, and wooden tables.',
@@ -328,7 +267,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'fabric-nano-coating-qatar-sofa-carpet-hydrophobic-protection',
     id: 'blog-06',
-    num: '06',
+    num: '05',
     category: 'Fabric Nano Coating',
     title:
       'Why Every Luxury Sofa & Majlis Carpet in Qatar Needs Hydrophobic SiO2 Nano Coating',
@@ -341,8 +280,8 @@ export const BLOG_POSTS: BlogPost[] = [
     bgClass: 'bg-[#a78bfa]',
     image: ASSETS.services.fabricNanoCoating,
     alt: 'Fabric nano coating service for sofa in Qatar showing liquid spill beading',
-    relatedServiceSlug: 'fabric-nano-coating-service',
-    relatedServiceTitle: 'Fabric Nano Coating Service',
+    relatedServiceSlug: 'fabric-nano-coating',
+    relatedServiceTitle: 'Fabric Nano Coating',
     keyTakeaways: [
       'SiO2 (silicon dioxide) nanoparticles wrap around individual textile fibers at a molecular level without clogging the weave.',
       'Spills of Arabic coffee, Karak tea,berry juice, or sauces stay suspended as round droplets on top of the cushion.',
@@ -357,8 +296,8 @@ export const BLOG_POSTS: BlogPost[] = [
           'When a spill happens on a nano-coated sofa, do not rub it in! Simply touch a dry tissue to the droplet and watch the liquid wick straight into the paper towel.',
       },
       {
-        heading: '2. Ideal for Majlis Suites, Dining Chairs, Silk Rugs & Car Interiors',
-        body: 'Our mobile team treats complete villa living rooms, traditional and modern Majlis halls, upholstered dining chairs, bedroom headboards, Persian carpets, and even luxury SUV Alcantara/fabric seats right at your home in 60 to 120 minutes.',
+        heading: '2. Ideal for Majlis Suites, Dining Chairs, Silk Rugs & Curtains',
+        body: 'Our mobile team treats complete villa living rooms, traditional and modern Majlis halls, upholstered dining chairs, bedroom headboards, Persian carpets, and fabric curtains right at your home in 60 to 120 minutes.',
       },
     ],
     quickSpecComparison: [

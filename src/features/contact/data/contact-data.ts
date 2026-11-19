@@ -5,9 +5,9 @@ export const REQUEST_MODES = [
     desc: 'Get an instant flat-rate price and priority callback.',
   },
   {
-    id: 'Mobile Home Car Tinting',
-    label: '🚗 Mobile Home Garage Car Tinting',
-    desc: 'We come to your shaded villa garage anywhere in Qatar.',
+    id: 'Mobile On-Site Service',
+    label: '🏡 Mobile On-Site Service',
+    desc: 'We come to your villa, apartment or office anywhere in Qatar.',
   },
   {
     id: 'Free On-Site Villa/Office Audit',
@@ -22,8 +22,8 @@ export const CONTACT_FAQS = [
     a: 'During our operating hours (8:00 AM – 6:00 PM, 7 days a week), our Doha dispatch desk typically responds within 10 to 15 minutes with your flat-rate quote and available installation slots.',
   },
   {
-    q: 'What do I need at home for your mobile car window tinting home service?',
-    a: 'All we require is a covered or shaded parking space out of direct wind and dust (such as an enclosed villa garage or underground apartment parking in Lusail or The Pearl) plus access to a standard power outlet.',
+    q: 'Do you work on-site at my villa, apartment or office?',
+    a: 'Yes. Our team comes to you anywhere in Qatar. We just need access to the glass, surfaces or walls being treated and a standard power outlet.',
   },
   {
     q: 'Do you charge extra for on-site measurements for residential villas or commercial offices?',

@@ -286,14 +286,14 @@ export default function ContactBookingTicket({
                   htmlFor="cpNotes"
                   className="block text-[11px] font-extrabold uppercase tracking-wider text-black/80 mb-1"
                 >
-                  Vehicle Model / Villa or Office Details (Optional)
+                  Villa, Apartment or Office Details (Optional)
                 </label>
                 <input
                   id="cpNotes"
                   type="text"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="e.g., Land Cruiser 2026 in Lusail garage / 4-bedroom villa windows"
+                  placeholder="e.g., 4-bedroom villa windows in Lusail / meeting room glass in West Bay"
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-black text-sm font-semibold text-[#121118]"
                 />
               </div>

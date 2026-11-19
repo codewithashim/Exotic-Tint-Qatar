@@ -25,36 +25,13 @@ export interface ReelSlide {
 
 export const REELS_ITEMS: ReelSlide[] = [
   {
-    id: 'reel-01',
-    num: '01',
-    title: '96% IR Nano-Ceramic Car Window Tinting in Doha',
-    caption:
-      'Studio & mobile home garage car window tinting in Qatar. Drops cabin heat by 14°C with 99.9% UV protection.',
-    serviceSlug: 'automotive-window-tinting',
-    serviceTitle: 'Automotive Window Tinting',
-    location: 'Lusail & Doha Studio',
-    durationSec: 34,
-    durationFormatted: '00:34',
-    views: '48.2K',
-    likes: 342,
-    comments: 28,
-    shares: 19,
-    image: ASSETS.services.automotive,
-    badgeText: '96% HEAT REJECTION',
-    accentColor: '#f27438',
-    topComment: {
-      author: '@khalid_al_thani',
-      text: 'Installed on my Land Cruiser at home in Al Kheesa—cabin stays ice cold!',
-    },
-  },
-  {
     id: 'reel-02',
-    num: '02',
+    num: '01',
     title: 'Red Juice Spill Test on Nano-Coated Majlis Sofa!',
     caption:
       'Watch berry juice & coffee bead right off this cream sofa thanks to our hydrophobic SiO2 Fabric Nano Coating.',
-    serviceSlug: 'fabric-nano-coating-service',
-    serviceTitle: 'Fabric Nano Coating Service',
+    serviceSlug: 'fabric-nano-coating',
+    serviceTitle: 'Fabric Nano Coating',
     location: 'Al Gharrafa & The Pearl',
     durationSec: 28,
     durationFormatted: '00:28',
@@ -72,12 +49,12 @@ export const REELS_ITEMS: ReelSlide[] = [
   },
   {
     id: 'reel-03',
-    num: '03',
+    num: '02',
     title: '8-Mil Self-Healing TPU Marble Protection Film',
     caption:
       'Optical wet-bond stone protection film stops lemon acid etching, coffee stains & scratches on Italian marble islands.',
-    serviceSlug: 'marble-protection-film',
-    serviceTitle: 'Marble Protection Film',
+    serviceSlug: 'surface-protection-film',
+    serviceTitle: 'Surface Protection Film',
     location: 'The Pearl-Qatar Villa',
     durationSec: 45,
     durationFormatted: '00:45',
@@ -95,12 +72,12 @@ export const REELS_ITEMS: ReelSlide[] = [
   },
   {
     id: 'reel-04',
-    num: '04',
+    num: '03',
     title: 'Commercial Window Tinting Doha — 32% AC Savings',
     caption:
       'Architectural solar-control & one-way mirror film installation for commercial office towers in West Bay & Lusail.',
-    serviceSlug: 'commercial-window-tinting',
-    serviceTitle: 'Commercial Window Tinting',
+    serviceSlug: 'sun-control-window-film',
+    serviceTitle: 'Sun Control Window Film',
     location: 'West Bay Doha',
     durationSec: 38,
     durationFormatted: '00:38',
@@ -118,12 +95,12 @@ export const REELS_ITEMS: ReelSlide[] = [
   },
   {
     id: 'reel-05',
-    num: '05',
+    num: '04',
     title: 'Daytime One-Way Villa Privacy Window Tinting',
     caption:
       'Keep your villa curtains open all day with crystal-clear outside views, 99.9% UV block, and full daytime privacy.',
-    serviceSlug: 'residential-window-tinting',
-    serviceTitle: 'Residential Window Tinting',
+    serviceSlug: 'sun-control-window-film',
+    serviceTitle: 'Sun Control Window Film',
     location: 'Al Rayyan & Lusail Villas',
     durationSec: 41,
     durationFormatted: '00:41',
@@ -141,12 +118,12 @@ export const REELS_ITEMS: ReelSlide[] = [
   },
   {
     id: 'reel-06',
-    num: '06',
+    num: '05',
     title: '0.1mm CNC Customized Cut Frosted Film Designs',
     caption:
       'Precision plotter-cut frosted glass partition patterns, Arabic motifs, and corporate logos installed in Doha.',
-    serviceSlug: 'customized-cut-frosted-film',
-    serviceTitle: 'Customized Cut Frosted Film',
+    serviceSlug: 'frosted-decorative-film',
+    serviceTitle: 'Frosted & Decorative Film',
     location: 'Doha Corporate Suites',
     durationSec: 32,
     durationFormatted: '00:32',

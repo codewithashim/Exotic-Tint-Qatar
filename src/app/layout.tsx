@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   authors: [{ name: SEO_CONFIG.siteName, url: SEO_CONFIG.siteUrl }],
   creator: SEO_CONFIG.siteName,
   publisher: SEO_CONFIG.siteName,
-  category: 'Automotive & Home Services',
+  category: 'Home & Commercial Services',
   robots: resolveRobots(),
   formatDetection: { telephone: false, email: false, address: false },
   // Icons come from file conventions: app/favicon.ico (16/32/48), app/icon.png (192),

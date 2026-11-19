@@ -10,7 +10,7 @@ export default function HappyClientsSection() {
             Our Happy Clients
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            Real reviews from car, home, and commercial tinting clients across Qatar.
+            Reviews from home and commercial clients across Qatar.
           </p>
         </div>
 

@@ -130,7 +130,7 @@ export default function GalleryCommandBar({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search Lusail, Porsche, marble, Majlis, West Bay..."
+                placeholder="Search Lusail, villa, marble, Majlis, West Bay..."
                 aria-label="Search gallery items"
                 className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-[#121118] border-2 border-black text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#d9f941] font-medium"
               />

@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import SiteLink from '@/components/ui/SiteLink';
 import { ROUTES } from '@/config/routes';
 import { BOOKING_AREAS } from '@/config/site';
-import { ALL_SERVICES, type ServiceDetail } from '@/features/services';
+import { ALL_SERVICES, SERVICE_CATEGORY_LABELS, type ServiceDetail } from '@/features/services';
 
 interface ServicesMegaMenuProps {
   /** Called when a page link in the menu is followed (closes the menu). */
@@ -14,8 +14,8 @@ interface ServicesMegaMenuProps {
   onPickArea: (area: string) => void;
 }
 
-const windowTintServices = ALL_SERVICES.filter((s) => s.category === 'window-tinting');
-const surfaceProtectionServices = ALL_SERVICES.filter((s) => s.category === 'surface-protection');
+const glassFilmServices = ALL_SERVICES.filter((s) => s.category === 'glass-film');
+const surfaceInteriorServices = ALL_SERVICES.filter((s) => s.category === 'surface-interior');
 
 function MegaMenuServiceItem({
   item,
@@ -114,26 +114,26 @@ export default function ServicesMegaMenu({
   return (
     <div className="hidden lg:block border-t-2 border-black bg-[#121118]/98 backdrop-blur-2xl py-5 px-6 shadow-2xl max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain">
       <div className="max-w-6xl mx-auto rounded-3xl bg-[#1a1922] border-2 border-black shadow-[8px_8px_0px_#000] p-5 xl:p-6 grid grid-cols-12 gap-5 xl:gap-6">
-        {/* Column 1: Window & glass tinting (01–04) */}
+        {/* Column 1: glass & window films */}
         <div className="col-span-4">
           <ServiceColumn
-            heading="01–04 · Window & Glass Tinting"
+            heading={SERVICE_CATEGORY_LABELS['glass-film']}
             headingClass="text-[#f27438]"
-            meta="96% IR · 99% UV"
-            services={windowTintServices}
+            meta="Sun · Frosted · Smart · Safety"
+            services={glassFilmServices}
             hovered={hovered}
             onHover={setHovered}
             onNavigate={onNavigate}
           />
         </div>
 
-        {/* Column 2: Surface protection (05–06) + dispatch zones */}
+        {/* Column 2: surface & interior finishes + dispatch zones */}
         <div className="col-span-4 flex flex-col justify-between space-y-3">
           <ServiceColumn
-            heading="05–06 · Surface & Fabric Shield"
+            heading={SERVICE_CATEGORY_LABELS['surface-interior']}
             headingClass="text-[#d9f941]"
-            meta="Stone · Wood · Sofa"
-            services={surfaceProtectionServices}
+            meta="Surfaces · Fabric · Walls"
+            services={surfaceInteriorServices}
             hovered={hovered}
             onHover={setHovered}
             onNavigate={onNavigate}

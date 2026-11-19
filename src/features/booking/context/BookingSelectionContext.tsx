@@ -2,13 +2,14 @@
 
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 import { BOOKING_AREAS } from '@/config/site';
+import { ALL_SERVICES } from '@/features/services/data/services-data';
 
 /** Service shown first in every booking form (matches `ServiceDetail.id`). */
-export const DEFAULT_BOOKING_SERVICE = 'Automotive Window Tinting';
+export const DEFAULT_BOOKING_SERVICE: string = ALL_SERVICES[0].id;
 export const DEFAULT_BOOKING_AREA: string = BOOKING_AREAS[0];
 
 interface BookingSelection {
-  /** Selected service id (the service title, e.g. "Automotive Window Tinting"). */
+  /** Selected service id (the service title, e.g. "Sun Control Window Film"). */
   service: string;
   area: string;
   setService: (service: string) => void;

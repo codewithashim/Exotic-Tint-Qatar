@@ -35,7 +35,7 @@ export default function ServiceDetailSubHeader({ service }: ServiceDetailSubHead
 
           <div className="hidden sm:flex items-center gap-2">
             <span className="px-2.5 py-1 rounded-md bg-[#121118] border border-white/15 font-mono text-[11px] font-bold text-slate-300 whitespace-nowrap">
-              SOLUTION {service.num} OF 06
+              SOLUTION {service.num} OF {String(ALL_SERVICES.length).padStart(2, '0')}
             </span>
             <a
               href="#service-booking-ticket"
@@ -46,8 +46,8 @@ export default function ServiceDetailSubHeader({ service }: ServiceDetailSubHead
           </div>
         </div>
 
-        {/* Bottom Row: All 6 Services Switcher Grid (Zero Scrollbar, Fully Visible) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-1">
+        {/* Bottom row: switcher between all service pages */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-1">
           {ALL_SERVICES.map((item) => {
             const isCurrent = item.slug === service.slug;
             return (

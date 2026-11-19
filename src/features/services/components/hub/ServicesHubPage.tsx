@@ -14,9 +14,7 @@ import type { ServicesFilterTab } from '@/features/services/data/services-hub-da
 export default function ServicesHubPage() {
   const [selectedServiceTitle, setSelectedServiceTitle] = useState(DEFAULT_BOOKING_SERVICE);
   const [activeTab, setActiveTab] = useState<ServicesFilterTab>('all');
-  const [selectedMatcherSlug, setSelectedMatcherSlug] = useState<string>(
-    'automotive-window-tinting'
-  );
+  const [selectedMatcherSlug, setSelectedMatcherSlug] = useState<string>(ALL_SERVICES[0].slug);
 
   const filteredServices: ServiceDetail[] =
     activeTab === 'all'

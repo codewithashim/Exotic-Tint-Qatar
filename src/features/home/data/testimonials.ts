@@ -14,13 +14,6 @@ export const HAPPY_CLIENTS_DATA: Testimonial[] = [
       'Their nano coating for sofa and marble protection services are incredible. My furniture and surfaces look brand new, thanks to nano coating Qatar from Exotic Tint Qatar.',
   },
   {
-    id: '002',
-    name: 'Harold Harrison',
-    service: 'Car Window Tinting Qatar',
-    quote:
-      'I used their car window tinting Qatar service, and the heat rejection window film keeps my car cool. Highly recommend Exotic Tint Qatar!',
-  },
-  {
     id: '003',
     name: 'Miranda Snyder',
     service: 'Commercial Window Tinting Doha & Frosted Film',
